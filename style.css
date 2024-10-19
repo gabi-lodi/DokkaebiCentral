@@ -1,0 +1,127 @@
+@font-face {
+    font-family: KeplerNormal;
+    src: url(./fontes/KeplerStdSubh.otf);
+}
+
+@font-face {
+    font-family: KeplerBold;
+    src: url(./fontes/KeplerStdBlack.otf);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: KeplerNormal;
+    cursor: url(./cursor/cursor-2.cur), auto;
+}
+
+body a{
+    color: black;
+    text-decoration: none;
+}
+
+button{
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+    font-family: KeplerNormal;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    cursor: url(./cursor/cursor-3.cur), auto;
+}
+
+.navbar {
+    background-image: linear-gradient(
+        to right,
+        white,
+        #DCDCDC
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbarMiddle{
+    width: 20%; 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
+}
+
+.navbarRight{
+    width: 20%; 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
+}
+
+.navbarLeft{
+    display: flex;
+    align-items: center;
+}
+
+.HomeStyle{
+    display: flex; 
+    text-align: center; 
+    justify-content: center;
+}
+
+.container{
+    height: 60vh;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    background-image: url(./imagens/Banner.jpg);
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.banner {
+    background-color: black;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.box1{
+    display: flex;
+}
+
+.galeria{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+}
+
+.galeria img{
+    border-radius: 45px;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.galeria img:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: 50px;
+}
