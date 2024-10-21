@@ -20,7 +20,10 @@ body a{
     text-decoration: none;
 }
 
-button{
+.navbarRight a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30px;
     width: 100px;
     border-radius: 10px;
@@ -32,7 +35,7 @@ button{
     transition: all 0.3s ease-in-out;
 }
 
-button:hover{
+.navbarRight a:hover{
     transform: scale(1.05);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
     cursor: url(./cursor/cursor-3.cur), auto;
@@ -63,6 +66,7 @@ button:hover{
     align-items: center;
 }
 
+
 .navbarLeft{
     display: flex;
     align-items: center;
@@ -84,6 +88,30 @@ button:hover{
     display: flex;
     justify-content: center;
     align-items: end;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container-sobreORV{
+    height: 20vh;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    background-image: url(./imagens/Banner.jpg);
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container-Login-Signup{
+    height: 93vh;
+    color: white;
+    background-image: url(./imagens/bg3.jpg);
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -113,7 +141,7 @@ button:hover{
 
 .galeria img:hover{
     transform: scale(1.05);
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .intro {
@@ -125,3 +153,208 @@ button:hover{
     width: 50%;
     margin: 50px;
 }
+
+.mainTextBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainText{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 1000px;
+    transition: scale 0.5s;
+}
+
+.mainText:hover{
+    scale: 1.05;
+}
+
+.subTexts{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.subTextsBox{
+    padding: 30px;
+    text-align: center;
+    transition: scale 0.5s;
+}
+
+.subTextsBox:hover{
+    scale: 1.05;
+}
+
+.imageBoxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+}
+
+.imageBox{
+    padding: 20px;
+}
+
+.imageContent img{
+    transition: scale 0.5s, rotate 0.5s;
+}
+
+.imageContent:hover img{
+    scale: 1.05;
+    rotate: 2deg;
+}
+
+.imageBox img{
+    border-radius: 20px;
+}
+
+.loginBox{
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.loginBox input{
+    font-size: 16px;
+    font-family: KeplerNormal;
+    margin: 10px;
+    background-color: #E0E0E0;
+    border: none;
+    border-radius: 10px;
+    height: 38px;
+    width: 500px;
+    padding: 10px;
+    text-align: start;
+}
+
+.loginBox button{
+    margin: 20px;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background-color: #3C3C3C;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    font-family: KeplerNormal;
+    transition: all 0.3s ease-in-out;
+}
+
+.loginBox button:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    cursor: url(./cursor/cursor-3.cur), auto;
+}
+
+.cadastroBox{
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.inputsCadastro{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputsCadastro input{
+    font-size: 16px;
+    font-family: KeplerNormal;
+    margin: 10px;
+    background-color: #E0E0E0;
+    border: none;
+    border-radius: 10px;
+    height: 38px;
+    width: 350px;
+    padding: 10px;
+    text-align: start;
+}
+
+.inputsCadastro select{
+    appearance: none;
+    position: relative;
+    font-size: 16px;
+    font-family: KeplerNormal;
+    margin: 10px;
+    background-color: #E0E0E0;
+    box-shadow: none;
+    border: none;
+    border-radius: 10px;
+    height: 57px;
+    width: 400;
+    padding: 10px;
+    text-align: start;
+    appearance: none;
+    /* arrow */
+
+    /* link da imagem */
+    background-image: url("https://www.worldskillseurope.org/concrete/images/icons/select_arrow_down.svg");
+
+    /* para não espelhar */
+    background-repeat: no-repeat; 
+    
+    /* posição dela no select */
+    background-position: right 10px top 50%;
+
+    /* tamanho dela */
+    background-size: 10px auto;
+}
+
+.inputsCadastro button{
+    margin: 20px;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background-color: #3C3C3C;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    font-family: KeplerNormal;
+    transition: all 0.3s ease-in-out;
+}
+
+.cadastroBoxInputs{
+    display: flex;
+}
+
+.cadastroBox button{
+    margin: 20px;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background-color: #3C3C3C;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    font-family: KeplerNormal;
+    transition: all 0.3s ease-in-out;
+}
+
+.cadastroBox button:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    cursor: url(./cursor/cursor-3.cur), auto;
+}
+

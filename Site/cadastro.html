@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokkaebi Central</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div class="navbar">
+
+        <div class="navbarLeft">
+            <img src="./imagens/1.png" alt="" style="height: 50px;">
+            <h3>Dokkaebi Central</h3>
+        </div>
+
+            <div class="navbarMiddle">
+                <div style="display: flex; align-items: center;">
+                    <a href="./index.html">Home</a>
+                </div>
+                <div style="display: flex; align-items: center;">
+                <a href="./sobreORV.html">Sobre ORV</a>
+                </div>
+            </div>
+
+            <!-- login e cadastro -->
+
+            <div class="navbarRight">
+                <a href="./login.html">Login</a>
+                |
+                <a href="./cadastro.html" style="background-color: rgb(157, 157, 157); color: white; text-decoration: underline;">Sign-up</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100px;">
+            <img src="./imagens/2.png" alt="" style="width: 200px;">
+        </div>
+        <div class="container-Login-Signup">
+            <div class="cadastroBox">
+                <div>
+                    <h1>Cadastro</h1>
+                    <br>
+                <div class="cadastroBoxInputs">
+                    <div class="inputsCadastro">
+                    <input type="text" id="iptUsuario" placeholder="Usuário">
+                    <input type="text" id="iptEmail" placeholder="Email">
+                    <input type="password" id="iptSenha" placeholder="Senha">
+                    </div>
+
+                    <div class="inputsCadastro">
+                    <input type="date" id="iptDtNasc" placeholder="Data de Nascimento">
+                    <select name="PF" id="selectPF">
+                        <option value="">Personagem Favorito</option>
+                        <option value="KDJ">Kim Dokja</option>
+                        <option value="YJH">Yoo Joonghyuk</option>
+                        <option value="HSY">Han Sooyoung</option>
+                        <option value="LHS">Lee Hyunsung</option>
+                        <option value="JHW">Jung Heewon</option>
+                        <option value="LJH">Lee Jihye</option>
+                        <option value="YSG">Yoo Sangah</option>
+                        <option value="SYS">Shin Yooshung</option>
+                        <option value="LGY">Lee Gilyoung</option>
+                    </select>
+                    <select name="AF" id="selectAF">
+                        <option value="">Arco Favorito</option>
+                        <option value="1">Chegada dos Novatos</option>
+                        <option value="2">Domínio da Guerra</option>
+                        <option value="3">Grande Guerra de Estrelas</option>
+                        <option value="4">Guerra Civil de Seul</option>
+                        <option value="5">Candidatos à Transcendência</option>
+                        <option value="6">Novo Mundo</option>
+                        <option value="7">Cenário Final</option>
+                        <option value="8">Epilogo</option>
+                    </select>
+                </div>
+            </div>
+
+                    <button>Criar Conta</button>
+                    <p>Já possui uma conta? <a href="./login.html" style="text-decoration: underline;">Faça login!</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
