@@ -11,9 +11,25 @@
 @keyframes fade {
     from{
         opacity: 0;
+        scale: 0.9;
     } to {
         opacity: 1;
+        scale: 1;
     }
+}
+
+@keyframes typing{
+    from{opacity: 0%}
+}
+
+@keyframes height{
+    from{height: 70vh;}
+    to{height: 100vh;}
+}
+
+@keyframes height2{
+    from{height: 100vh;}
+    to{height: 70vh;}
 }
 
 body{
@@ -28,9 +44,9 @@ body a{
     text-decoration: none;
 }
 
-p, h3, .box1, .imageBox{
+p, h3, .box1, .imageBox, .bannerContainer, .banner2{
     /* aqui temos a animação do scroll, no qual o primeiro valor seria no nome declarado no @keyframe, o segundo seria a duração, o terceiro a direção (frente, trás ou ambos), e por mais que tenha mais opções, não é necessario colocar. */
-    animation: fade linear both; 
+    animation: fade ease both; 
     animation-timeline: view();  
     animation-range: entry 0% cover 40%;
 }
@@ -95,6 +111,7 @@ p, h3, .box1, .imageBox{
 }
 
 .container{
+    animation: height2 2s;
     height: 70vh;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -115,6 +132,7 @@ p, h3, .box1, .imageBox{
 }
 
 .container-sobreORV{
+    animation: height 2s;
     height: 100vh;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
@@ -123,8 +141,15 @@ p, h3, .box1, .imageBox{
     background-size: 100%;
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.container-sobreORV h1{
+    display: inline-block;
+    animation: fade 1s;
+    opacity: 100%;
 }
 
 .container-Login-Signup{
@@ -138,10 +163,53 @@ p, h3, .box1, .imageBox{
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
+.container-sobreSite{
+    background-color: white;
+    background-image: url(./imagens/banner6.jpg);
+    border-radius: 30px;
+    height: 100px;
+    position: relative;
+}
+
 .banner {
     background-color: black;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+}
+
+.banner2 {
+    background-color: white;
+    background-image: url(./imagens/banner8.png);
+    border-radius: 30px;
+    height: 100vh;
+    display: flex;
+    justify-content: end;
+}
+
+.bannerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content {
+    background-color: black;
+    color: white;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    width: 25%;
+    height: 100%;
+    opacity: 90%;
+}
+
+.content div{
+    padding: 30px;
 }
 
 .box1{
