@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokkaebi Central</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./validacao.js">
 </head>
 <body>
 
@@ -51,7 +52,7 @@
                     </div>
 
                     <div class="inputsCadastro">
-                    <input type="date" id="iptDtNasc" placeholder="Data de Nascimento">
+                    <input type="text" id="iptDtNasc" placeholder="Data de Nascimento (DD/MM/AAAA)">
                     <select name="PF" id="selectPF">
                         <option value="#">Personagem Favorito</option>
                         <option value="KDJ">Kim Dokja</option>
@@ -78,7 +79,7 @@
                 </div>
             </div>
 
-                    <button>Criar Conta</button>
+                    <button onclick="validacaoCadastro()">Criar Conta</button>
                     <p>Já possui uma conta? <a href="./login.html" style="text-decoration: underline;">Faça login!</a></p>
                 </div>
             </div>

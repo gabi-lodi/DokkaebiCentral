@@ -18,10 +18,6 @@
     }
 }
 
-@keyframes typing{
-    from{opacity: 0%}
-}
-
 @keyframes height{
     from{height: 70vh;}
     to{height: 100vh;}
