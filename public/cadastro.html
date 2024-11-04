@@ -47,8 +47,10 @@
                 <div class="cadastroBoxInputs">
                     <div class="inputsCadastro">
                     <input type="text" id="iptUsuario" placeholder="Usuário">
-                    <input type="text" id="iptEmail" placeholder="Email">
-                    <input type="password" id="iptSenha" placeholder="Senha">
+                    <input type="text" id="iptEmail" placeholder="Email" oninput="validacaoEmail()">
+                    <div id="divEmail"></div>
+                    <input type="password" id="iptSenha" placeholder="Senha" oninput="validacaoSenha()">
+                    <div id="divSenha"></div>
                     </div>
 
                     <div class="inputsCadastro">
@@ -65,6 +67,7 @@
                         <option value="SYS">Shin Yooshung</option>
                         <option value="LGY">Lee Gilyoung</option>
                     </select>
+                    <div id="divSelectPF"></div>
                     <select name="AF" id="selectAF">
                         <option value="#">Arco Favorito</option>
                         <option value="1">Chegada dos Novatos</option>
@@ -76,16 +79,169 @@
                         <option value="7">Cenário Final</option>
                         <option value="8">Epilogo</option>
                     </select>
+                    <div id="divSelectAF"></div>
                 </div>
             </div>
 
-                    <button onclick="validacaoCadastro()">Criar Conta</button>
+                    <button onclick="cadastrar()">Criar Conta</button>
+                    <div id="divErro" style='display: flex; justify-content: center; align-items: center; text-align: center;'></div>
                     <p>Já possui uma conta? <a href="./login.html" style="text-decoration: underline;">Faça login!</a></p>
                 </div>
             </div>
         </div>
     </div>
 
-<script>
-    
-</script>
+    <!-- web-data-viz -->
+    <script>
+      
+        function cadastrar() {
+          // aguardar();
+      
+          //Recupere o valor da nova input pelo nome do id
+          // Agora vá para o método fetch logo abaixo
+          var usuarioVar = iptUsuario.value;
+          var emailVar = iptEmail.value;
+          var senhaVar = iptSenha.value;
+          var dtNascVar = iptDtNasc.value;
+          var persoFavVar = selectPF.value;
+          var arcoFavVar = selectAF.value;
+
+        //   divSelectPF.innerHTML = ""
+
+        //   if (persoFavVar == "#") {
+        //     divSelectPF.innerHTML = `<span style="color: red;">* Selecione um personagem para prosseguir</span>`
+        //   }
+
+        //   divSelectAF.innerHTML = ""
+
+        //   if (arcoFavVar == "#") {
+        //     divSelectAF.innerHTML = `<span style="color: red;">* Selecione um arco para prosseguir</span>`
+        //   }
+      
+          // Verificando se há algum campo em branco
+          if (
+            usuarioVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            dtNascVar == "" ||
+            persoFavVar == "" ||
+            arcoFavVar == ""
+          ) {
+            divErro.innerHTML = "<div style='background-color: darkgrey; border-radius: 5px; width: 60%; padding: 10px;'>Erro ao criar conta: verifique se todos os campos foram preenchidos</div>";
+      
+            finalizarAguardar();
+            return false;
+          } else {
+            setInterval(sumirMensagem, 5000);
+          }
+
+          
+      
+          // Enviando o valor da nova input
+          fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              nomeServer: nomeVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar,
+              idEmpresaVincularServer: idEmpresaVincular,
+              cpfServer: cpfVar
+            }),
+          })
+            .then(function (resposta) {
+              console.log("resposta: ", resposta);
+      
+              if (resposta.ok) {
+                cardErro.style.display = "block";
+      
+                mensagem_erro.innerHTML =
+                  "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+      
+                setTimeout(() => {
+                  window.location = "login.html";
+                }, "2000");
+      
+                limparFormulario();
+                finalizarAguardar();
+              } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+              }
+            })
+            .catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
+              finalizarAguardar();
+            });
+      
+          return false;
+        }
+      
+        function sumirMensagem() {
+          cardErro.style.display = "none";
+        }
+    </script>
+
+    <!-- validação Email + Senha -->
+    <script>
+        function validacaoEmail(){
+            var email = iptEmail.value;
+            var mensagem = "";
+
+            if(email.includes('@') && email.includes('.com') || email == ""){
+
+            } else {
+                mensagem = "<span style='color: red;'>Email inválido.</span>"
+            }
+
+            divEmail.innerHTML = `${mensagem}`
+        }
+
+        function validacaoSenha(){
+            var senha = iptSenha.value;
+            var mensagem = "";
+            
+            if(senha == ""){
+
+            } else if(
+                senha.length > 12 
+                && (senha.includes('!') 
+                || senha.includes('@') 
+                || senha.includes('#') 
+                || senha.includes('$') 
+                || senha.includes('%') 
+                || senha.includes('&') 
+                || senha.includes('0') 
+                || senha.includes('1') 
+                || senha.includes('2') 
+                || senha.includes('3') 
+                || senha.includes('4') 
+                || senha.includes('5') 
+                || senha.includes('6') 
+                || senha.includes('7') 
+                || senha.includes('8') 
+                || senha.includes('9')) 
+                && senha != senha.toLowerCase()){
+                mensagem = "<span style='color: green'>Senha Forte</span>"
+            } else if (
+                senha.includes('0') 
+                || senha.includes('1') 
+                || senha.includes('2') 
+                || senha.includes('3') 
+                || senha.includes('4') 
+                || senha.includes('5') 
+                || senha.includes('6') 
+                || senha.includes('7') 
+                || senha.includes('8') 
+                || senha.includes('9')){
+                mensagem = "<span style='color: orange'>Senha Média</span>"
+            } else {
+                mensagem = "<span style='color: red'>Senha Fraca</span>"
+            }
+
+            divSenha.innerHTML = `${mensagem}`
+        }
+    </script>
