@@ -84,7 +84,7 @@
             </div>
 
                     <button onclick="cadastrar()">Criar Conta</button>
-                    <div id="divErro" style='display: flex; justify-content: center; align-items: center; text-align: center;'></div>
+                    <div id="divErro" style='color:red;display: flex; justify-content: center; align-items: center; text-align: center;'></div>
                     <p>Já possui uma conta? <a href="./login.html" style="text-decoration: underline;">Faça login!</a></p>
                 </div>
             </div>
@@ -127,7 +127,7 @@
             persoFavVar == "" ||
             arcoFavVar == ""
           ) {
-            divErro.innerHTML = "<div style='background-color: darkgrey; border-radius: 5px; width: 60%; padding: 10px;'>Erro ao criar conta: verifique se todos os campos foram preenchidos</div>";
+            divErro.innerHTML = "<div style='background-color: white; border-radius: 5px; border-color: red; border-style: solid; width: 60%; padding: 10px;'>*Erro ao criar conta: verifique se todos os campos foram preenchidos</div>";
       
             finalizarAguardar();
             return false;
@@ -227,7 +227,8 @@
                 && senha != senha.toLowerCase()){
                 mensagem = "<span style='color: green'>Senha Forte</span>"
             } else if (
-                senha.includes('0') 
+              senha.length > 10 
+                && (senha.includes('0') 
                 || senha.includes('1') 
                 || senha.includes('2') 
                 || senha.includes('3') 
@@ -236,7 +237,9 @@
                 || senha.includes('6') 
                 || senha.includes('7') 
                 || senha.includes('8') 
-                || senha.includes('9')){
+                || senha.includes('9')) 
+
+            ){
                 mensagem = "<span style='color: orange'>Senha Média</span>"
             } else {
                 mensagem = "<span style='color: red'>Senha Fraca</span>"
