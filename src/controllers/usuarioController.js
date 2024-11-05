@@ -2,16 +2,19 @@ var usuarioModel = require("../models/usuarioModel");
 var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
+    var usuario = req.body.usuarioVar;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 
-    if (email == undefined) {
-        res.status(400).send("Seu email está undefined!");
+    if(usuario == undefined){
+        res.status(400).send("Seu usuário está indefinido!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está indefinido!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(email, senha)
+        usuarioModel.autenticar(usuario, email, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -53,11 +56,12 @@ function autenticar(req, res) {
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
+    var usuario = req.body.usuarioVar;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var cpf = req.body.cpfServer;
-    var fkEmpresa = req.body.idEmpresaVincularServer;
+    var dtNasc = req.body.dtNascServer;
+    var persoFav = req.body.persoFavServer;
+    var arcoFav = req.body.arcoFavServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -73,7 +77,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, cpf, senha, fkEmpresa)
+        usuarioModel.cadastrar(nome, email, senha, dtNasc, fkPersoFav, fkArcoFav)
             .then(
                 function (resultado) {
                     res.json(resultado);
