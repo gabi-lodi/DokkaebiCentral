@@ -57,15 +57,16 @@
                     <input type="text" id="iptDtNasc" placeholder="Data de Nascimento (DD/MM/AAAA)">
                     <select name="PF" id="selectPF">
                         <option value="#">Personagem Favorito</option>
-                        <option value="KDJ">Kim Dokja</option>
-                        <option value="YJH">Yoo Joonghyuk</option>
-                        <option value="HSY">Han Sooyoung</option>
-                        <option value="LHS">Lee Hyunsung</option>
-                        <option value="JHW">Jung Heewon</option>
-                        <option value="LJH">Lee Jihye</option>
-                        <option value="YSG">Yoo Sangah</option>
-                        <option value="SYS">Shin Yooshung</option>
-                        <option value="LGY">Lee Gilyoung</option>
+                        <option value="1">Kim Dokja</option>
+                        <option value="2">Yoo Joonghyuk</option>
+                        <option value="3">Han Sooyoung</option>
+                        <option value="4">Lee Hyunsung</option>
+                        <option value="5">Jung Heewon</option>
+                        <option value="6">Lee Jihye</option>
+                        <option value="7">Yoo Sangah</option>
+                        <option value="8">Shin Yooshung</option>
+                        <option value="9">Lee Gilyoung</option>
+                        <option value="">Não Definido</option>
                     </select>
                     <div id="divSelectPF"></div>
                     <select name="AF" id="selectAF">
@@ -78,6 +79,7 @@
                         <option value="6">Novo Mundo</option>
                         <option value="7">Cenário Final</option>
                         <option value="8">Epilogo</option>
+                        <option value="">Não Definido</option>
                     </select>
                     <div id="divSelectAF"></div>
                 </div>
@@ -118,14 +120,14 @@
         //     divSelectAF.innerHTML = `<span style="color: red;">* Selecione um arco para prosseguir</span>`
         //   }
       
-          // Verificando se há algum campo em branco
+        // Verificando se há algum campo em branco
           if (
             usuarioVar == "" ||
             emailVar == "" ||
             senhaVar == "" ||
             dtNascVar == "" ||
-            persoFavVar == "" ||
-            arcoFavVar == ""
+            persoFavVar == "#" ||
+            arcoFavVar == "#"
           ) {
             divErro.innerHTML = "<div style='background-color: white; border-radius: 5px; border-color: red; border-style: solid; width: 60%; padding: 10px;'>*Erro ao criar conta: verifique se todos os campos foram preenchidos</div>";
       

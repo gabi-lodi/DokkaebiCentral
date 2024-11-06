@@ -1,0 +1,12 @@
+{
+  "name": "dokkaebicentral",
+  "version": "1.0.0",
+  "description": "<img src=\"https://i.imghippo.com/files/NfUZ1739WZg.png\" style=\"width: 400px\">",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
