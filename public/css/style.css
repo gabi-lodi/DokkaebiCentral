@@ -288,11 +288,6 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     justify-content: center;
     margin: 20px;
     width: 1000px;
-    transition: scale 0.5s;
-}
-
-.mainText:hover{
-    scale: 1.05;
 }
 
 .subTexts{
@@ -305,11 +300,6 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 .subTextsBox{
     padding: 30px;
     text-align: center;
-    transition: scale 0.5s;
-}
-
-.subTextsBox:hover{
-    scale: 1.05;
 }
 
 .imageBoxes{
