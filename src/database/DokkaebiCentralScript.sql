@@ -53,6 +53,42 @@ fkComentarioUsuario int,
 		references Usuario(idUsuario)
 );
 
+INSERT INTO Personagem (nome) VALUES
+	('Kim Dokja'),
+	('Yoo Joonghyuk'),
+	('Han Sooyoung'),
+	('Lee Hyunsung'),
+	('Jung Heewon'),
+	('Lee Jihye'),
+	('Yoo Sangah'),
+	('Shin Yooshung'),
+	('Lee Gilyoung');
+    
+INSERT INTO Arco (nome) VALUES
+	('Chegada dos Novatos'),
+	('Domínio da Guerra'),
+	('Grande Guerra de Estrelas'),
+	('Guerra Civil de Seul'),
+	('Candidatos à Transcendência'),
+	('Novo Mundo'),
+	('Cenário Final'),
+	('Epilogo');
+
+INSERT INTO Personagem (nome) VALUES
+	('Não Definido');
+    
+INSERT INTO Arco (nome) VALUES
+	('Não Definido');
+
+select * from Usuario; 
+select * from Personagem; 
+select * from Arco; 
+
+delete from personagem where idPerso = 10;
+delete from arco where idArco = 9;
+
+UPDATE Personagem set idPerso = 10 where idPerso = 11;
+UPDATE Arco set idArco = 9 where idArco = 10;
 
 
 

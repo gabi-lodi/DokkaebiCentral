@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokkaebi Central</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./validacao.js">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="validacao" href="./validacao.js">
 </head>
 <body>
 
@@ -23,6 +23,7 @@
                 <div style="display: flex; align-items: center;">
                 <a href="./sobreORV.html">Sobre ORV</a>
                 </div>
+                <a href="./blog.html">Feed</a>
             </div>
 
             <!-- login e cadastro -->
@@ -66,7 +67,7 @@
                         <option value="7">Yoo Sangah</option>
                         <option value="8">Shin Yooshung</option>
                         <option value="9">Lee Gilyoung</option>
-                        <option value="">Não Definido</option>
+                        <option value="10">Não Definido</option>
                     </select>
                     <div id="divSelectPF"></div>
                     <select name="AF" id="selectAF">
@@ -79,7 +80,7 @@
                         <option value="6">Novo Mundo</option>
                         <option value="7">Cenário Final</option>
                         <option value="8">Epilogo</option>
-                        <option value="">Não Definido</option>
+                        <option value="9">Não Definido</option>
                     </select>
                     <div id="divSelectAF"></div>
                 </div>
@@ -133,11 +134,12 @@
       
             finalizarAguardar();
             return false;
-          } else {
-            setInterval(sumirMensagem, 5000);
-          }
+          } 
+          // else {
+          //   setInterval(sumirMensagem, 5000);
+          // }
 
-          
+
       
           // Enviando o valor da nova input -> API
           fetch("/usuarios/cadastrar", {
@@ -159,21 +161,21 @@
             .then(function (resposta) {
               console.log("resposta: ", resposta);
       
-              if (resposta.ok) {
-                cardErro.style.display = "block";
+              // if (resposta.ok) {
+              //   cardErro.style.display = "block";
       
-                mensagem_erro.innerHTML =
-                  "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+              //   mensagem_erro.innerHTML =
+              //     "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
       
-                setTimeout(() => {
-                  window.location = "login.html";
-                }, "2000");
+              //   setTimeout(() => {
+              //     window.location = "login.html";
+              //   }, "2000");
       
-                limparFormulario();
-                finalizarAguardar();
-              } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
+              //   limparFormulario();
+              //   finalizarAguardar();
+              // } else {
+              //   throw "Houve um erro ao tentar realizar o cadastro!";
+              // }
             })
             .catch(function (resposta) {
               console.log(`#ERRO: ${resposta}`);
@@ -183,9 +185,9 @@
           return false;
         }
       
-        function sumirMensagem() {
-          cardErro.style.display = "none";
-        }
+        // function sumirMensagem() {
+        //   cardErro.style.display = "none";
+        // }
     </script>
 
     <!-- validação Email + Senha -->
@@ -247,7 +249,7 @@
             } else {
                 mensagem = "<span style='color: red'>Senha Fraca</span>"
             }
-
+            
             divSenha.innerHTML = `${mensagem}`
         }
     </script>

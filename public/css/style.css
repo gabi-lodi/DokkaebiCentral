@@ -1,11 +1,11 @@
 @font-face {
     font-family: KeplerNormal;
-    src: url(./fontes/KeplerStdSubh.otf);
+    src: url(./../fontes/KeplerStdSubh.otf);
 }
 
 @font-face {
     font-family: KeplerBold;
-    src: url(./fontes/KeplerStdBlack.otf);
+    src: url(./../fontes/KeplerStdBlack.otf);
 }
 
 @keyframes fade {
@@ -32,7 +32,7 @@ body{
     margin: 0;
     padding: 0;
     font-family: KeplerNormal;
-    cursor: url(./cursor/cursor-2.cur), auto;
+    cursor: url(./../cursor/cursor-2.cur), auto;
 }
 
 body a{
@@ -65,7 +65,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 .navbarRight a:hover{
     transform: scale(1.05);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
-    cursor: url(./cursor/cursor-3.cur), auto;
+    cursor: url(./../cursor/cursor-3.cur), auto;
 }
 
 .navbar {
@@ -112,7 +112,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     color: white;
-    background-image: url(./imagens/Banner2.jpg);
+    background-image: url(./../imagens/Banner2.jpg);
     background-size: 100%;
     display: flex;
     justify-content: center;
@@ -133,7 +133,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     color: white;
-    background-image: url(./imagens/Banner2.jpg);
+    background-image: url(./../imagens/Banner2.jpg);
     background-size: 100%;
     display: flex;
     justify-content: center;
@@ -151,7 +151,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 .container-Login-Signup{
     height: 93vh;
     color: white;
-    background-image: url(./imagens/Banner2.jpg);
+    background-image: url(./../imagens/Banner2.jpg);
     background-size: 100%;
     display: flex;
     justify-content: center;
@@ -161,7 +161,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 
 .container-sobreSite{
     background-color: white;
-    background-image: url(./imagens/banner6.jpg);
+    background-image: url(./../imagens/banner6.jpg);
     border-radius: 30px;
     height: 100px;
     position: relative;
@@ -174,12 +174,11 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 }
 
 .banner2 {
-    background-color: white;
-    background-image: url(./imagens/banner8.png);
+    background-color: black;
     border-radius: 30px;
-    height: 100vh;
+    height: 70vh;
     display: flex;
-    justify-content: end;
+    justify-content: center;
 }
 
 .bannerContainer{
@@ -190,16 +189,15 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 }
 
 .content {
-    background-color: black;
     color: white;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 20px;
-    width: 25%;
+    font-size: 22px;
+    margin: 20px;
+    width: 40%;
     height: 100%;
     opacity: 90%;
 }
@@ -379,7 +377,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 .loginBox button:hover{
     transform: scale(1.05);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
-    cursor: url(./cursor/cursor-3.cur), auto;
+    cursor: url(./../cursor/cursor-3.cur), auto;
 }
 
 .cadastroBox{

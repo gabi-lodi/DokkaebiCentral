@@ -1,0 +1,105 @@
+@font-face {
+    font-family: KeplerNormal;
+    src: url(./fontes/KeplerStdSubh.otf);
+}
+
+@font-face {
+    font-family: KeplerBold;
+    src: url(./fontes/KeplerStdBlack.otf);
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+        scale: 0.9;
+    } to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: KeplerNormal;
+    cursor: url(./../cursor/cursor-2.cur), auto;
+}
+
+body a{
+    color: black;
+    text-decoration: none;
+}
+
+p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
+    /* aqui temos a animação do scroll, no qual o primeiro valor seria no nome declarado no @keyframe, o segundo seria a duração, o terceiro a direção (frente, trás ou ambos), e por mais que tenha mais opções, não é necessario colocar. */
+    animation: fade ease both; 
+    animation-timeline: view();  
+    animation-range: entry 0% cover 40%;
+}
+
+.navbarRight a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+    font-family: KeplerNormal;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbarRight a:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    cursor: url(./../cursor/cursor-3.cur), auto;
+}
+
+.navbar {
+    background-image: linear-gradient(
+        to right,
+        white,
+        #DCDCDC
+    );
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbarMiddle{
+    width: 20%; 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
+}
+
+.navbarRight{
+    width: 20%; 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center;
+}
+
+
+.navbarLeft{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.container{
+    height: 30vh;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+    background-image: url(./../imagens/Banner2.jpg);
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: end;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+}
