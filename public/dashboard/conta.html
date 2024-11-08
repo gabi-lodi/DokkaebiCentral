@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="./../css/dashboard.css">
     <link rel="imgsheet" href="./../imagens">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -41,6 +42,38 @@
         </div>
     </div>
         <div class="box1">
+
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
     
 </body>
 </html>
+
+<script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Lido', 'Não Lido'],
+        datasets: [{
+          label: '# of Votes',
+          data: [70, 30],
+          borderWidth: 2,
+          backgroundColor: [
+              'rgba(1, 1, 1, 1)',
+              'rgba(1, 0, 0, 0.1)'
+              ]
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+   
