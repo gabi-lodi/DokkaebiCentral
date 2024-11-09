@@ -43,92 +43,128 @@
     </div>
         <div class="box1">
 
-<div class="contaBox">
-  <div>
-      <canvas id="myChart"></canvas>
-  </div>
-  <div class="CBbox">
-    <div class="checkboxBox">
-
+  <div class="contaBox">
+  
+    <div class="graficoIPT">
+      <h2>Progresso de Leitura</h2>
+      <div class="grafico">
+        <div id="divMensagem"></div>
+        <canvas id="myChart"></canvas>
+      </div>
       <div>
-        <div class="checkbox">
-          Arco 1: <br> Chegada dos Novatos <br> <input type="checkbox">
+        <input type="number" id="iptCapitulo" placeholder="Capítulo atual">
+        <button onclick="progresso()">Ver Progresso</button>
+      </div>
+    </div>
+  
+    <div class="CBbox">
+
+      <div class="checkboxBox">
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 1: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
         </div>
-      </div>
-
-      <div>
-        <div class="checkbox">
-          Arco 2: <br> Chegada dos Novatos <br> <input type="checkbox">
+  
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 2: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
         </div>
+  
       </div>
+  
+      <div class="checkboxBox">
 
-    </div>
-
-    <div class="checkboxBox">
-
-      <div class="checkbox">
-        Arco 3: <br> Chegada dos Novatos <br> <input type="checkbox">
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 3: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
+        </div>
+  
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 4: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
+        </div>
+  
       </div>
-
-      <div class="checkbox">
-        Arco 4: <br> Chegada dos Novatos <br> <input type="checkbox">
+  
+      <div class="checkboxBox">
+  
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 5: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
+        </div>
+  
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 6: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
+        </div>
+  
       </div>
-
-    </div>
-
-    <div class="checkboxBox">
-
-      <div class="checkbox">
-        Arco 5: <br> Chegada dos Novatos <br> <input type="checkbox">
+  
+      <div class="checkboxBox">
+  
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 7: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
+        </div>
+  
+        <div class="checkboxDiv">
+          <div class="checkbox">
+            Arco 8: <br> Chegada dos Novatos <br> <input type="checkbox">
+          </div>
+        </div>
+        
       </div>
-
-      <div class="checkbox">
-        Arco 6: <br> Chegada dos Novatos <br> <input type="checkbox">
-      </div>
-
-    </div>
-
-    <div class="checkboxBox">
-
-      <div class="checkbox">
-        Arco 7: <br> Chegada dos Novatos <br> <input type="checkbox">
-      </div>
-
-      <div class="checkbox">
-        Arco 8: <br> Chegada dos Novatos <br> <input type="checkbox">
-      </div>
-      
     </div>
   </div>
-</div>
     
 </body>
 </html>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 
 <script>
-    const ctx = document.getElementById('myChart');
-  
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Lido', 'Não Lido'],
-        datasets: [{
-          label: '# of Votes',
-          data: [70, 30],
-          borderWidth: 2,
-          backgroundColor: [
-              'rgba(1, 1, 1, 1)',
-              'rgba(1, 0, 0, 0.1)'
-              ]
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+
+    divMensagem.innerHTML = 'Insira o número do Capítulo que você está'
+
+    function progresso(){
+      var capitulo = Number(iptCapitulo.value);
+      if(capitulo > 551){
+        alert('O livro tem somente 551 capítlos! Insira um valor válido')
+      } else if(capitulo < 1){
+        alert('O livro não tem capítulos negativos! Insira um valor válido.')
+      } else {
+
+        var porcentagemLeitura = (capitulo/551) * 100
+
+        divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
+         const ctx = document.getElementById('myChart');
+      
+         new Chart(ctx, {
+           type: 'doughnut',
+            data: {
+            labels: ['Lido', 'Não Lido'],
+            datasets: [{
+               label: '# of Votes',
+               data: [capitulo, (551 -capitulo)],
+               borderWidth: 2,
+               backgroundColor: [
+                   'rgba(1, 1, 1, 1)',
+                   'rgba(1, 0, 0, 0.1)'
+                  ],
+              circumference: 270,
+              rotation: 225,
+              radius: 200
+                }]
+              },
+          }) 
+          
       }
-    });
+    }
   </script>
    

@@ -98,6 +98,11 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
+.contaBox{
+    display: flex;
+    flex-direction: row;
+}
+
 .checkbox{
     display: flex;
     flex-direction: column;
@@ -114,5 +119,70 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 
 .checkboxBox{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
+.checkboxDiv{
+   margin: 20px;
+}
+
+.grafico{
+    width: 70vh;
+    border: 2px;
+    border-style: solid;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.graficoIPT{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vh;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.CBbox{
+    width: 100vh;
+}
+
+input{
+    font-size: 16px;
+    font-family: KeplerNormal;
+    margin: 10px;
+    background-color: #E0E0E0;
+    border: none;
+    border-radius: 10px;
+    height: 21px;
+    width: 400px;
+    padding: 10px;
+    text-align: start;
+}
+
+button{
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    background-color: #3C3C3C;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    font-family: KeplerNormal;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    cursor: url(./../cursor/cursor-3.cur), auto;
+}
