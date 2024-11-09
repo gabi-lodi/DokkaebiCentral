@@ -97,3 +97,22 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     align-items: end;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 }
+
+.checkbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 30vh;
+    height: 20vh;
+    border-color: black;
+    border-style: solid;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.checkboxBox{
+    display: flex;
+}
+
