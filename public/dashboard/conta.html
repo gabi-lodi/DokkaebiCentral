@@ -48,7 +48,8 @@
     <div class="graficoIPT">
       <h2>Progresso de Leitura</h2>
       <div class="grafico">
-        <div id="divMensagem"></div>
+        <div id="divMensagem">
+        </div>
         <canvas id="myChart"></canvas>
       </div>
       <div>
@@ -245,6 +246,27 @@
           }) 
           
       }
+      fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              // crie um atributo que recebe o valor recuperado aqui
+              // Agora vá para o arquivo routes/usuario.js
+              capituloServer: capitulo,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("resposta: ", resposta);
+      
+            })
+            .catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
+              finalizarAguardar();
+            });
+      
+          return false;
     }
   </script>
    
