@@ -28,9 +28,9 @@
             <!-- login e cadastro -->
 
             <div class="navbarRight">
-                <a href="./login.html">Sign-in</a>
+                <a href="./login.html">Login</a>
                 |
-                <a href="./cadastro.html">Sign-up</a>
+                <a href="./cadastro.html">Cadastro</a>
             </div>
         </div>
 
@@ -54,24 +54,26 @@
                 <img src="./imagens/gallery/HSYgallery.jpg" alt="" style="height: 350px;">
                 </div>
             </div>
-
+            
             <div class="intro">
-            <h3>Guia Inicial ao mundo de ORV</h3>
-            <img src="./imagens/line.png" alt="" style="height:25px;">
-            <p>"Omniscient Reader's Viewpoint" (ORV), é uma novel escrita por Sing-Shong, uma dupla de escritores. 
-                Contada a partir da perspectiva de Kim Dokja, trabalhador de 28 anos que passou a última década de sua vida
-                obcecado por uma web novel, chamada “Três Maneiras de Sobreviver a um Apocalipse”, que se encontra em uma 
-                condição de usar seu alto conhecimento da web novel para sobreviver ao Apocalipse, que acabou se tornando 
-                realidade logo após ele finalizar o último capítulo.</p>
+                <h3>Guia Inicial ao mundo de ORV</h3>
+                <img src="./imagens/line.png" alt="" style="height:25px;">
+                <p>"Omniscient Reader's Viewpoint" (ORV), é uma novel escrita por Sing-Shong, uma dupla de escritores. 
+                    Contada a partir da perspectiva de Kim Dokja, trabalhador de 28 anos que passou a última década de sua vida
+                    obcecado por uma web novel, chamada “Três Maneiras de Sobreviver a um Apocalipse”, que se encontra em uma 
+                    condição de usar seu alto conhecimento da web novel para sobreviver ao Apocalipse, que acabou se tornando 
+                    realidade logo após ele finalizar o último capítulo.</p>
+                    <a href="./sobreORV.html" style="text-decoration: underline; color: dimgrey;">Saiba mais sobre ORV</a>
         </div>
     </div>  
 
     <div class="banner2">
-            <div class="content">
-                <h2>Sobre Dokkaebi Central</h2>
-                <p>Dokkaebi Central tem como principal objetivo atrair leitores e não leitores ao mundo inovador de ORV, podendo eles explorar um pouco da estória antes de lê-la, abrindo a possibilidade de analisar os personagens, a estória e um pouco a arte oficial tanto da web-novel quanto do manhwa (que ainda está em produção). ORV trás ao leitor desde lições de vida, enfrentamento de mudanças abruptas, encarar os erros do passado, ter uma visão da linha da sua vida, até algo simples como empatia.</p>
+            <div class="content" id="divContent">
+                <h2>Sobre Dokkaebi Central</h2><p>Dokkaebi Central tem como principal objetivo atrair leitores e não leitores ao mundo inovador de ORV, podendo eles explorar um pouco da estória antes de lê-la, abrindo a possibilidade de analisar os personagens, a estória e um pouco a arte oficial tanto da web-novel quanto do manhwa (que ainda está em produção). ORV trás ao leitor desde lições de vida, enfrentamento de mudanças abruptas, encarar os erros do passado, ter uma visão da linha da sua vida, até algo simples como empatia.</p>
             </div>
-        </div>
+            <div>
+                <input type="checkbox" class="checkboxBanner2" onclick="mudar()" id="checkboxValue">
+            </div>
         <div class="bannerContainer">
         </div>
     </div>
@@ -81,7 +83,7 @@
             <h2>Impacto</h2>
             <div>
                 <h3>Por que e como ORV impacta na Educação de Qualidade?</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias vitae earum eligendi distinctio? Necessitatibus, laudantium distinctio sunt consequatur provident commodi perspiciatis minima cum aliquam qui nostrum libero id, fugiat debitis!</p>
+                <p>A leitura de livros é extremamente benéfica para a educação, podendo, a partir tanto da história quanto da forma que ela for escrita, aumentar o vocabulário do leitor, auxiliá-lo na criação de um pensamento crítico, desenvolver habilidades tais como concentração, raciocínio e imaginação e conscientizar sobre diversos aspectos da sociedade. Ademais, vale citar que a leitura fornece ao leitor uma diversificação de interpretações, ajudando na criação de pensamento crítico e imaginação. Omniscient Readers Viewpoint entra na educação e qualidade por, além de fornecer uma história repleta de imaginação e reviravoltas, ser uma história contada a partir do ponto de vista de um leitor, que aprende com os próprios erros, é forçado a se adaptar em um ambiente completamente diferente do seu no dia a dia e encarar problemas que requerem complexas soluções, sempre mantendo sua cabeça alta.</p>
             </div>
             <div>
                 <img src="./imagens/educaçãoODS.png" alt="ODS-Educação-de-Qualidade" style="border-radius: 20px; width: 120px;">
@@ -121,3 +123,16 @@
 </div>
 </body>
 </html>
+
+<script>
+    function mudar(){
+        var checkbox = document.getElementById('checkboxValue')
+        if(checkbox.checked == false){
+            divContent.innerHTML = '<h2>Sobre Dokkaebi Central</h2><p>Dokkaebi Central tem como principal objetivo atrair leitores e não leitores ao mundo inovador de ORV, podendo eles explorar um pouco da estória antes de lê-la, abrindo a possibilidade de analisar os personagens, a estória e um pouco a arte oficial tanto da web-novel quanto do manhwa (que ainda está em produção). ORV trás ao leitor desde lições de vida, enfrentamento de mudanças abruptas, encarar os erros do passado, ter uma visão da linha da sua vida, até algo simples como empatia.</p>'
+        } else {
+            divContent.innerHTML = '<h2>Motivação</h2><p>A principal motivação para a criação do projeto foi o imenso amor pessoal diante da novel, a qual me proporcionou uma nova visão de vida, além de me trazer uma visão completamente diferente diante dos livros que eu leio. A novel me trouxe um dilema muito importante, o qual levo no meu dia a dia: “O importante não é ler as letras, mas sim aonde elas irão te levar”. Um fator em comum entre leitores é a solidão sentida sempre ao acabar de ler um livro excelente, e diante dessa solidão se vem o pensamento “esse realmente foi o final?”. E de fato, era o final. Entretanto, um ensinamento de ORV me trouxe foi que, apesar da história não ter nada depois capítulo de encerramento, não necessariamente é o fim, e você pode não ter visto tudo sobre ela ainda. Então, leia-a novamente. Reler uma história já finalizada pode parecer estranho, mas uma segunda leitura sempre se torna diferente da primeira, e ela irá mudar a cada vez que ela for lida.'
+        }
+        
+    }
+
+</script>
