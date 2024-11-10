@@ -115,6 +115,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     border-style: solid;
     border-radius: 20px;
     text-align: center;
+    font-size: 16px;
 }
 
 .checkboxBox{
@@ -185,4 +186,12 @@ button:hover{
     transform: scale(1.05);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
     cursor: url(./../cursor/cursor-3.cur), auto;
+}
+
+.CHKbox{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 4px;
 }
