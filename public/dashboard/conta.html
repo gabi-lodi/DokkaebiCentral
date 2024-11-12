@@ -262,7 +262,7 @@
 
 
 
-    function plotarGrafico(idUsuario){
+    function progresso(idUsuario){
       var capitulo = Number(iptCapitulo.value);
       if(capitulo > 551){
         alert('O livro tem somente 551 capítlos! Insira um valor válido')
@@ -271,6 +271,7 @@
       } else {
 
         var porcentagemLeitura = (capitulo/551) * 100
+
 
         divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
          const ctx = document.getElementById('myChart');
@@ -297,8 +298,7 @@
           for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
+            dados.datasets[0].data.push(registro.capitulo);
         }
 
         const config = {

@@ -1,3 +1,4 @@
+
 CREATE DATABASE DokkaebiCentral;
 USE DokkaebiCentral;
 
@@ -33,11 +34,12 @@ fkUsuario int,
 		references Usuario(idUsuario)
 );
 
-SELECT COUNT(idProgresso) FROM ProgressoLeitura WHERE fkUsuario = ${ID_USUARIO};
+SELECT COUNT(idProgresso) FROM ProgressoLeitura WHERE fkUsuario = 1;
 
 CREATE TABLE Postagem(
 idPostagem int primary key auto_increment,
 dtPostagem date,
+titulo varchar(40),
 conteudo varchar(300),
 fkUsuario int,
     constraint fkPostagensUsuario foreign key (fkUsuario)
@@ -85,12 +87,6 @@ INSERT INTO Arco (nome) VALUES
 select * from Usuario; 
 select * from Personagem; 
 select * from Arco; 
-
-delete from personagem where idPerso = 10;
-delete from arco where idArco = 9;
-
-UPDATE Personagem set idPerso = 10 where idPerso = 11;
-UPDATE Arco set idArco = 9 where idArco = 10;
 
 SELECT 
 
