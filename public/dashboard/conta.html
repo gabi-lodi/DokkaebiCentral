@@ -231,111 +231,140 @@
 
 
 
-    function obterDadosGrafico(idUsuario) {
+//     function obterDadosGrafico(idUsuario) {
 
-      alterarTitulo(idUsuario)
+//       alterarTitulo(idUsuario)
 
-      if (proximaAtualizacao != undefined) {
-          clearTimeout(proximaAtualizacao);
-      }
-      // fetch -> busca algo do back-end, trazendo os dados pela primeira vez! uma função chamando a outra
-      // post -> inserindo
-      fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-          if (response.ok) {
-              response.json().then(function (resposta) {
-                  console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                  resposta.reverse();
+//       if (proximaAtualizacao != undefined) {
+//           clearTimeout(proximaAtualizacao);
+//       }
+//       // fetch -> busca algo do back-end, trazendo os dados pela primeira vez! uma função chamando a outra
+//       // post -> inserindo
+//       fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+//           if (response.ok) {
+//               response.json().then(function (resposta) {
+//                   console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+//                   resposta.reverse();
 
-                 plotarGrafico(resposta, idAquario);
-        });
-    } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-    }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-}
-
-
+//                  plotarGrafico(resposta, idAquario);
+//         });
+//     } else {
+//         console.error('Nenhum dado encontrado ou erro na API');
+//     }
+// })
+//     .catch(function (error) {
+//         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+//     });
+// }
 
 
 
 
-    function progresso(idUsuario){
+
+
+    function progresso(){
+      
+              var idUsuario = sessionStorage.ID_USUARIO;
       var capitulo = Number(iptCapitulo.value);
+
       if(capitulo > 551){
         alert('O livro tem somente 551 capítlos! Insira um valor válido')
       } else if(capitulo < 1){
         alert('O livro não tem capítulos negativos! Insira um valor válido.')
       } else {
 
-        var porcentagemLeitura = (capitulo/551) * 100
-
+        var porcentagemLeitura = (capitulo/551) * 100 
 
         divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
-         const ctx = document.getElementById('myChart');
-      
-         let dados = {
-            type: 'doughnut',
-            data: {
-            labels: ['Lido', 'Não Lido'],
-            datasets: [{
-               label: 'Capítulos',
-               data: [capitulo, (551 -capitulo)],
-               borderWidth: 2,
-               backgroundColor: [
-                   'rgba(1, 1, 1, 1)',
-                   'rgba(1, 0, 0, 0.1)'
+        const ctx = document.getElementById('myChart');
+
+        
+        const data = {
+        labels: ['Lido', 'Não Lido'],
+          datasets: [{
+              label: 'Capítulos',
+              data: [capitulo, (551 -capitulo)],
+              borderWidth: 2,
+              backgroundColor: [
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 0, 0, 0.1)'
                   ],
               circumference: 270,
               rotation: 225,
               radius: 200
-                }]
-              },
-          }
-
-          for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.capitulo);
-        }
+            }]
+          };
 
         const config = {
-            type: 'line',
-            data: dados,
+        type: 'doughnut',
+        data: data,
         };
 
-        // Adicionando gráfico criado em div na tela
-        let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
-            config
-        );
-
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-          
+        new Chart(ctx, config)
       }
-      fetch("/medidas/historico/`${sessionStorage.getItem('ID_USUARIO')`", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
+    } 
+
+         
+            //  new Chart, (ctx, {
+            //     labels: ['Lido', 'Não Lido'],
+            //     datasets: [{
+            //        label: 'Capítulos',
+            //        data: [capitulo, (551 -capitulo)],
+            //        borderWidth: 2,
+            //        backgroundColor: [
+            //            'rgba(1, 1, 1, 1)',
+            //            'rgba(1, 0, 0, 0.1)'
+            //           ],
+            //       circumference: 270,
+            //       rotation: 225,
+            //       radius: 200
+            //         }]
+            //      });
+        //         }
+
+        // }
+
+        //   for (i = 0; i < resposta.length; i++) {
+        //     var registro = resposta[i];
+        //     labels.push(registro.momento_grafico);
+        //     dados.datasets[0].data.push(registro.capitulo);
+        // }
+
+        // const config = {
+        //     type: 'line',
+        //     data: dados,
+        // };
+
+        // // Adicionando gráfico criado em div na tela
+        // let myChart = new Chart(
+        //     document.getElementById(`myChartCanvas${idAquario}`),
+        //     config
+        // );
+
+        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+          
+      // }
+      // fetch("/medidas/historico/`${sessionStorage.getItem('ID_USUARIO')`", {
+      //       method: "POST",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //       body: JSON.stringify({
+      //         // crie um atributo que recebe o valor recuperado aqui
+      //         // Agora vá para o arquivo routes/usuario.js
+      //       }),
+      //     })
+      //       .then(function (resposta) {
+      //         console.log("resposta: ", resposta);
       
-            })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-              // finalizarAguardar();
-            });
+      //       })
+      //       .catch(function (resposta) {
+      //         console.log(`#ERRO: ${resposta}`);
+      //         // finalizarAguardar();
+      //       });
       
-          return false;
-    }
+      //     return false;
+    
 
 
 

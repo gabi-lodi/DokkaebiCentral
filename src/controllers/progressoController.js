@@ -1,15 +1,12 @@
-var feedModel = require("../models/feedModel");
+var feedModel = require("../models/progressoModel");
 
 
-function publicar(req, res) {
-    var titulo = req.body.titulo;
-    var descricao = req.body.descricao;
+function progresso(req, res) {
+    var capitulo = req.body.capitulo;
     var idUsuario = req.params.idUsuario;
 
-    if (titulo == undefined) {
+    if (capitulo == undefined) {
         res.status(400).send("O título está indefinido!");
-    } else if (descricao == undefined) {
-        res.status(400).send("A descrição está indefinido!");
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
     } else {
@@ -33,7 +30,7 @@ module.exports = {
     // listar,
     // listarPorUsuario,
     // pesquisarDescricao,
-    publicar,
+    progresso,
     // editar,
     // deletar
 }
