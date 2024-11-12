@@ -45,6 +45,40 @@
         </div>
     </div>
         <div class="box1">
+
+            <div class="Feed">
+                <div id="alerta"></div>
+                <div class="Postagem">
+                    
+                    <div class="div-form">
+                        
+                        <h1>Nova Postagem</h1>
+                        <form id="form_postagem" method="post" onsubmit="return publicar()">
+                            <label>
+                                Título:
+                                <input name="titulo" id="titulo" maxlength="100" type="text">
+                            </label>
+                            <br>
+                            <br>
+                            <label>
+                                Conteúdo
+                                <br>
+                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                            </label>
+                            <br>
+                            <br>
+                            <button>Enviar</button>
+                        </form>
+
+                    </div>
+
+                    <h1>Feed</h1>
+                    <div class="div-results">
+                        <div id="feed_container" class="feed-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
     
 </body>
 </html>

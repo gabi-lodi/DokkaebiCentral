@@ -33,6 +33,8 @@ fkUsuario int,
 		references Usuario(idUsuario)
 );
 
+SELECT COUNT(idProgresso) FROM ProgressoLeitura WHERE fkUsuario = ${ID_USUARIO};
+
 CREATE TABLE Postagem(
 idPostagem int primary key auto_increment,
 dtPostagem date,
@@ -90,6 +92,6 @@ delete from arco where idArco = 9;
 UPDATE Personagem set idPerso = 10 where idPerso = 11;
 UPDATE Arco set idArco = 9 where idArco = 10;
 
-
+SELECT 
 
 

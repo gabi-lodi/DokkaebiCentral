@@ -94,7 +94,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     display: flex;
     justify-content: center;
     align-items: center;
-    align-items: end;
+    align-items: center;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -195,3 +195,82 @@ button:hover{
     border: 2px solid #333;
     border-radius: 4px;
 }
+
+.hello{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.conteudoHome{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.contaHomeBox{
+    color: white;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 300px;
+    border-radius: 15px;
+    margin: 30px;
+    padding: 20px;
+    transition: scale 0.5s, rotate 0.5s;
+}
+
+.contaHomeBox p{
+    text-align: start;
+    font-size: 22px;
+}
+
+.contaHomeBox a{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+}
+
+.contaHomeBox:hover{
+    scale: 1.02;
+    rotate: 2deg;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    cursor: url(./../cursor/cursor-3.cur), auto;
+
+}
+
+.Postagem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8f8f8f;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.div-form textarea{
+    width: 450px;
+    height: 100px;
+    border-radius: 15px;
+    border: none;
+    background-color: #DCDCDC;
+}
+
+
+
+
+
