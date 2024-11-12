@@ -1,12 +1,9 @@
-function progresso(capitulo) {
+var database = require("../database/config");
 
-    var instrucaoSql = `
-        INSERT INTO ProgressoLeitura (capitulo) VALUES ('${capitulo}');
-    `;
+function progresso(idcapitulo, capitulo) {
+
+    var instrucaoSql = ``;
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
-module.exports = {
-    progresso
-};

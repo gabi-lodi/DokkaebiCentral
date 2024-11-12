@@ -2,7 +2,7 @@ const e = require("express");
 var usuarioModel = require("../models/usuarioModel");
 
 function autenticar(req, res) {
-    var usuario = req.body.usuarioVar;
+    var usuario = req.body.usuarioServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
 

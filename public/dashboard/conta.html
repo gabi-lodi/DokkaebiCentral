@@ -221,7 +221,7 @@
         alert('O livro não tem capítulos negativos! Insira um valor válido.')
       } else {
 
-        var porcentagemLeitura = (capitulo/551) * 100
+        /*var porcentagemLeitura = (capitulo/551) * 100
 
         divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
          const ctx = document.getElementById('myChart');
@@ -243,10 +243,10 @@
               radius: 200
                 }]
               },
-          }) 
+          }) */
           
       }
-      fetch("/usuarios/cadastrar", {
+      fetch("/medidas/historico/`${sessionStorage.getItem('ID_USUARIO')`", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -254,7 +254,6 @@
             body: JSON.stringify({
               // crie um atributo que recebe o valor recuperado aqui
               // Agora vá para o arquivo routes/usuario.js
-              capituloServer: capitulo,
             }),
           })
             .then(function (resposta) {
@@ -263,7 +262,7 @@
             })
             .catch(function (resposta) {
               console.log(`#ERRO: ${resposta}`);
-              finalizarAguardar();
+              // finalizarAguardar();
             });
       
           return false;
