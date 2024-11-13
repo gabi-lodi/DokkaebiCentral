@@ -263,8 +263,8 @@
 
 
     function progresso(){
-      
-              var idUsuario = sessionStorage.ID_USUARIO;
+      data = [] 
+      var idUsuario = sessionStorage.ID_USUARIO;
       var capitulo = Number(iptCapitulo.value);
 
       if(capitulo > 551){
@@ -278,12 +278,33 @@
         divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
         const ctx = document.getElementById('myChart');
 
+        fetch(`/progresso/progresso/${idUsuario}/${capitulo}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+    
+            console.log("resposta: ", resposta);
+    
+            if (resposta.ok) {
+                window.alert(sessionStorage.NOME_USUARIO + ', Capitulo cadastrado com sucesso!');
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro" + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    
         
         const data = {
         labels: ['Lido', 'Não Lido'],
           datasets: [{
               label: 'Capítulos',
-              data: [capitulo, (551 -capitulo)],
+              data: [capitulo, (551 - capitulo)],
               borderWidth: 2,
               backgroundColor: [
                 'rgba(1, 1, 1, 1)',
@@ -301,75 +322,15 @@
         };
 
         new Chart(ctx, config)
+
+        var corpo = {
+            capitulo: Number(iptCapitulo.value),
+            idUsuario: sessionStorage.ID_USUARIO
+        }
+
+        return false;
       }
-    } 
-
-         
-            //  new Chart, (ctx, {
-            //     labels: ['Lido', 'Não Lido'],
-            //     datasets: [{
-            //        label: 'Capítulos',
-            //        data: [capitulo, (551 -capitulo)],
-            //        borderWidth: 2,
-            //        backgroundColor: [
-            //            'rgba(1, 1, 1, 1)',
-            //            'rgba(1, 0, 0, 0.1)'
-            //           ],
-            //       circumference: 270,
-            //       rotation: 225,
-            //       radius: 200
-            //         }]
-            //      });
-        //         }
-
-        // }
-
-        //   for (i = 0; i < resposta.length; i++) {
-        //     var registro = resposta[i];
-        //     labels.push(registro.momento_grafico);
-        //     dados.datasets[0].data.push(registro.capitulo);
-        // }
-
-        // const config = {
-        //     type: 'line',
-        //     data: dados,
-        // };
-
-        // // Adicionando gráfico criado em div na tela
-        // let myChart = new Chart(
-        //     document.getElementById(`myChartCanvas${idAquario}`),
-        //     config
-        // );
-
-        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
-          
-      // }
-      // fetch("/medidas/historico/`${sessionStorage.getItem('ID_USUARIO')`", {
-      //       method: "POST",
-      //       headers: {
-      //         "Content-Type": "application/json",
-      //       },
-      //       body: JSON.stringify({
-      //         // crie um atributo que recebe o valor recuperado aqui
-      //         // Agora vá para o arquivo routes/usuario.js
-      //       }),
-      //     })
-      //       .then(function (resposta) {
-      //         console.log("resposta: ", resposta);
-      
-      //       })
-      //       .catch(function (resposta) {
-      //         console.log(`#ERRO: ${resposta}`);
-      //         // finalizarAguardar();
-      //       });
-      
-      //     return false;
-    
-
-
-
-
-
+    }
 
 
 

@@ -19,6 +19,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var medidasRouter = require("./src/routes/medidas");
 var feedRouter = require("./src/routes/feed");
+var progressoRouter = require("./src/routes/progresso");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -30,6 +31,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/medidas", medidasRouter);
 app.use("/feed", feedRouter);
+app.use("/progresso", progressoRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

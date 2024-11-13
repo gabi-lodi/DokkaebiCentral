@@ -3,8 +3,9 @@ var router = express.Router();
 
 var progressoController = require("../controllers/progressoController");
 
-router.post("/progresso/:idUsuario", function (req, res) {
-    progressoController.publicar(req, res);
+router.post("/progresso/:idUsuario/:capitulo", function (req, res) {
+    progressoController.progresso(req, res);
+    console.log('entrei no router')
 });
 
 module.exports = router;

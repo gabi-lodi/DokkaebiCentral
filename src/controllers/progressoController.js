@@ -1,19 +1,23 @@
-var feedModel = require("../models/progressoModel");
+var progressoModel = require("../models/progressoModel");
 
 
 function progresso(req, res) {
-    var capitulo = req.body.capitulo;
+    var capitulo = req.params.capitulo;
     var idUsuario = req.params.idUsuario;
+    console.log('entrou no controller')
 
     if (capitulo == undefined) {
         res.status(400).send("O título está indefinido!");
+        console.log('meoowow3')
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
+        console.log('meow2')
     } else {
-        feedModel.publicar(titulo, descricao, idUsuario)
+        progressoModel.progresso(capitulo, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
+                    console.log('meoowow')
                 }
             )
             .catch(

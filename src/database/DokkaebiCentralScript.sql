@@ -1,4 +1,4 @@
-
+DROP DATABASE DokkaebiCentral;
 CREATE DATABASE DokkaebiCentral;
 USE DokkaebiCentral;
 
@@ -40,7 +40,7 @@ CREATE TABLE Postagem(
 idPostagem int primary key auto_increment,
 dtPostagem date,
 titulo varchar(40),
-conteudo varchar(300),
+descricao varchar(300),
 fkUsuario int,
     constraint fkPostagensUsuario foreign key (fkUsuario)
 		references Usuario(idUsuario)
@@ -87,7 +87,8 @@ INSERT INTO Arco (nome) VALUES
 select * from Usuario; 
 select * from Personagem; 
 select * from Arco; 
+select * from Postagem;
 
-SELECT 
+SELECT p.titulo, p.descricao, u.nome FROM Postagem as p JOIN Usuario as u ON p.fkUsuario = u.idUsuario;
 
 
