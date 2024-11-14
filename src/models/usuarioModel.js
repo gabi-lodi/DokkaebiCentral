@@ -20,13 +20,38 @@ function cadastrar(usuario, email, senha, dtNasc, persoFav, arcoFav) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO usuario (nome, email, senha, dtNasc, fkPersoFav, fkArcoFav) VALUES ('${usuario}', '${email}', '${senha}', '${dtNasc}', '${persoFav}', '${arcoFav}');
+        INSERT INTO Usuario (nome, email, senha, dtNasc, fkPersoFav, fkArcoFav) VALUES ('${usuario}', '${email}', '${senha}', '${dtNasc}', '${persoFav}', '${arcoFav}');
     `;
+    
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// pega o id do usuário que acabou de se cadastrar
+function obterId(usuario, email, senha) {
+
+    var instrucaoSql = `
+    SELECT idUsuario FROM Usuario WHERE nome = '${usuario}' AND email = '${email}' AND senha = '${senha}';
+    `;
+    
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+// a partir do id adquirido, insere no banco um valor inicial para os capítulos
+function registrarLeitura(idUsuario) {
+
+    var instrucaoSql = `
+    INSERT INTO ProgressoLeitura (capitulo, fkUsuario) VALUES (1, '${idUsuario}');
+    `;
+    
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    obterId,
+    registrarLeitura
 };

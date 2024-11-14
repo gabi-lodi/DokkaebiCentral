@@ -65,6 +65,7 @@ function cadastrar(req, res) {
     var dtNasc = req.body.dtNascServer;
     var persoFav = req.body.persoFavServer;
     var arcoFav = req.body.arcoFavServer;
+    var idUsuario;
 
     // Faça as validações dos valores
     if (usuario == undefined) {
@@ -84,7 +85,21 @@ function cadastrar(req, res) {
         usuarioModel.cadastrar(usuario, email, senha, dtNasc, persoFav, arcoFav)
             .then(
                 function (resultado) {
+                    usuarioModel.obterId(usuario, email, senha)
+                        .then(
+                            function (resultado) {
+                                usuarioModel.registrarLeitura(resultado[0].idUsuario)
+                   
+                            }
+                        ).catch (
+                            function (erro) {
+                                console.log(erro);
+                                console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                                res.status(500).json(erro.sqlMessage);
+                            }
+                        )
                     res.json(resultado);
+
                 }
             ).catch(
                 function (erro) {

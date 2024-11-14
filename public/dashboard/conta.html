@@ -258,10 +258,6 @@
 // }
 
 
-
-
-
-
     function progresso(){
       data = [] 
       var idUsuario = sessionStorage.ID_USUARIO;
@@ -289,7 +285,7 @@
             console.log("resposta: ", resposta);
     
             if (resposta.ok) {
-                window.alert(sessionStorage.NOME_USUARIO + ', Capitulo cadastrado com sucesso!');
+                
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {

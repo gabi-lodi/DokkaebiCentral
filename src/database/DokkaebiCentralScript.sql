@@ -88,6 +88,7 @@ select * from Usuario;
 select * from Personagem; 
 select * from Arco; 
 select * from Postagem;
+select * from ProgressoLeitura;
 
 SELECT p.titulo, p.descricao, u.nome FROM Postagem as p JOIN Usuario as u ON p.fkUsuario = u.idUsuario;
 
