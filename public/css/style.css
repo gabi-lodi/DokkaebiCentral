@@ -298,6 +298,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 .mainText{
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px;
@@ -540,4 +541,20 @@ svg{
 
 .boxImpactoImg{
     margin: 30px;
+}
+
+.chartsFeed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.colorLine{
+    background-color: black;
+    height: 5px;
+    width: 90%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }

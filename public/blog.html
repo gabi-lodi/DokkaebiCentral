@@ -32,3 +32,88 @@
             <a href="./cadastro.html">Cadastro</a>
         </div>
     </div>
+
+    <div class="chartsFeed">
+        <div style="height:250px; width:650px; display: flex; align-content: center; justify-content: center;">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div style="height:250px; width:650px; display: flex; align-content: center; justify-content: center;">
+            <canvas id="myChart2"></canvas>
+        </div>
+    </div>
+
+    <div class="colorLine"></div>
+
+    <div>
+        <h2>Mais recentes</h2>
+    </div>
+
+</body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['KDJ', 'YJH', 'HSY', 'LHS', 'JHW', 'LHJ', 'YSG', 'SYS', 'LGY', 'N/D'],
+        datasets: [{
+            label: 'Personagens Mais Populares',
+            data: [12, 19, 3, 5, 2, 3, 1, 1, 1, 1 ],
+            backgroundColor: [
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)'
+            ],
+            
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+   
+
+</script>
+<script>
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
+    const myChart2 = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: ['1-26', '27-50', '51-100', '101-190', '191-260', '261-348', '349-452', '453-551', 'N/D'],
+        datasets: [{
+            label: 'Arcos Mais Populares',
+            data: [12, 19, 3, 5, 2, 3, 1, 1, 1],
+            backgroundColor: [
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)',
+                'rgba(1, 1, 1, 1)'
+            ],
+            
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+   
+
+</script>

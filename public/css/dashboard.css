@@ -85,7 +85,7 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
 }
 
 .container{
-    height: 30vh;
+    height: 15vh;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     color: white;

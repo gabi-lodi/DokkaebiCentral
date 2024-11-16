@@ -17,11 +17,11 @@
 
         <div class="navbarMiddle">
             <div style="display: flex; align-items: center;">
-            <b><a href="./contaBlog.html" style="text-decoration: underline;">Feed</a></b>
+            <b><a href="./contaBlog.html" style="text-decoration: underline;">Postar</a></b>
             <img src="./../imagens/star.png" alt="" style="height: 20px;">
             </div>
             <a href="./contaHome.html">Home</a>
-            <a href="./starSystem.html">Star System</a>
+            <a href="./starSystem.html">Feed</a>
         </div>
         
         <div class="navbarRight">
@@ -39,11 +39,6 @@
         </div>
     </div>
 
-    <div class="banner">
-        <div class="container">
-                <img src="./imagens/DC-whitelogo.png" alt="" style="height: 90px;">
-        </div>
-    </div>
         <div class="box1">
 
             <div class="Feed">
@@ -71,8 +66,6 @@
                         </form>
 
                     </div>
-
-                    <h1>Feed</h1>
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
                         </div>
@@ -91,40 +84,45 @@
     
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
-    
+        
         var corpo = {
             titulo: form_postagem.titulo.value,
             descricao: form_postagem.descricao.value
         }
-    
-        fetch(`/feed/publicar/${idUsuario}`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(corpo)
-        }).then(function (resposta) {
-    
-            console.log("resposta: ", resposta);
-    
-            if (resposta.ok) {
-                window.alert(sessionStorage.NOME_USUARIO + ', seu post foi realizado com sucesso!');
-                limparFormulario();
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    
-        return false;
-    
+
+        if(form_postagem.titulo.value == '' || form_postagem.descricao.value == ''){
+            alert('Para fazer uma postagem, preencha os campos abaixo.')
+        }
+            
+            fetch(`/feed/publicar/${idUsuario}`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(corpo)
+            }).then(function (resposta) {
+        
+                console.log("resposta: ", resposta);
+                
+                if (resposta.ok) {
+                    window.alert(sessionStorage.NOME_USUARIO + ', seu post foi realizado com sucesso!');
+                    limparFormulario();
+                } else if (resposta.status == 404) {
+                    window.alert("Deu 404!");
+                } else {
+                    throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+        
+            return false;
+
+            
     }
     
     function atualizarFeed() {
-        fetch("/avisos/listar").then(function (resposta) {
+        fetch("/feed/publicar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
