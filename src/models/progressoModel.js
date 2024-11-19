@@ -12,7 +12,15 @@ function progresso(capitulo, idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function obterProgresso(usuario, email){
+    var instrucaoSql = `
+    SELECT PL.capitulo FROM ProgressoLeitura as PL JOIN Usuario as U ON PL.fkUsuario = U.idUsuario  WHERE nome = '${usuario}' AND email = '${email}';
+`;
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
-    progresso
+    progresso,
+    obterProgresso
 }

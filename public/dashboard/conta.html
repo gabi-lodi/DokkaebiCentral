@@ -1,373 +1,387 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./../css/dashboard.css">
-    <link rel="imgsheet" href="./../imagens">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./../css/dashboard.css">
+  <link rel="imgsheet" href="./../imagens">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    <div class="navbar">
+  <div class="navbar">
 
-        <div class="navbarLeft">
-            <img src="./../imagens/1.png" alt="" style="height: 50px;">
-            <h3>Dokkaebi Central</h3>
-        </div>
-
-        <div class="navbarMiddle">
-            <a href="./contaBlog.html">Postar</a>
-            <a href="./contaHome.html">Home</a>
-            <a href="./starSystem.html">Feed</a>
-        </div>
-        
-        <div class="navbarRight">
-            <div style="display: flex; align-items: center;">
-                <b><a href="./conta.html" style="text-decoration: underline;">Conta</a></b>
-                <img src="./../imagens/star.png" alt="" style="height: 20px;">
-            </div>
-            <div>
-                <img src="./../imagens/avatar-svgrepo-com.png" alt="" style="width: 40px;">
-            </div>
-        </div>
-    </div>
-    <div>
-
+    <div class="navbarLeft">
+      <img src="./../imagens/1.png" alt="" style="height: 50px;">
+      <h3>Dokkaebi Central</h3>
     </div>
 
-    <div class="banner">
-        <div class="container">
-                <div class="hello">
-                <h3>Progresso de leitura de <span id="b_usuario">usuário</span></h3>
-                </div>
-                <img src="./imagens/DC-whitelogo.png" alt="" style="height: 90px;">
-        </div>
+    <div class="navbarMiddle">
+      <a href="./contaBlog.html">Postar</a>
+      <a href="./contaHome.html">Home</a>
+      <a href="./starSystem.html">Feed</a>
     </div>
-        <div class="box1">
 
-  <div class="contaBox">
-  
-    <div class="graficoIPT">
-      <h2>Progresso de Leitura</h2>
-      <div class="grafico">
-        <div id="divMensagem">
-        </div>
-        <canvas id="myChart"></canvas>
+    <div class="navbarRight">
+      <div style="display: flex; align-items: center;">
+        <b><a href="./conta.html" style="text-decoration: underline;">Conta</a></b>
+        <img src="./../imagens/star.png" alt="" style="height: 20px;">
       </div>
       <div>
-        <input type="number" id="iptCapitulo" placeholder="Capítulo atual">
-        <button onclick="progresso()">Ver Progresso</button>
-      </div>
-    </div>
-  
-    <div class="CBbox">
-
-      <div class="checkboxBox">
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 1: <br> Chegada dos Novatos <br> (1-26) <br> <input type="checkbox" onclick="status1()" id="checkbox1" class="CHKbox">
-            <br> <div id="divStatusLeitura" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-  
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 2: <br> Domínio da Guerra <br> (27-50) <br> <input type="checkbox" onclick="status2()" id="checkbox2" class="CHKbox">
-            <br> <div id="divStatusLeitura2" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-  
-      </div>
-  
-      <div class="checkboxBox">
-
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 3: <br> Grande Guerra de Estrelas <br> (51-100) <br> <input type="checkbox" onclick="status3()" id="checkbox3" class="CHKbox">
-            <br> <div id="divStatusLeitura3" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-  
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 4: <br> Guerra Civil de Seul <br> (101-190) <br> <input type="checkbox" onclick="status4()" id="checkbox4" class="CHKbox">
-            <br> <div id="divStatusLeitura4" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-  
-      </div>
-  
-      <div class="checkboxBox">
-  
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 5: <br> Candidatos à Transcendência<br>(191-260) <br> <input type="checkbox" onclick="status5()" id="checkbox5" class="CHKbox">
-            <br> <div id="divStatusLeitura5" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-  
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 6: <br> Novo Mundo <br> (261-348) <br> <input type="checkbox" onclick="status6()" id="checkbox6" class="CHKbox">
-            <br> <div id="divStatusLeitura6" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-  
-      </div>
-  
-      <div class="checkboxBox">
-  
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 7: <br> Cenário Final<br> (349-452) <br> <input type="checkbox" onclick="status7()" id="checkbox7" class="CHKbox">
-            <br> <div id="divStatusLeitura7" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-  
-        <div class="checkboxDiv">
-          <div class="checkbox">
-            Arco 8: <br> Epilogo<br> (453-551) <br> <input type="checkbox" onclick="status8()" id="checkbox8" class="CHKbox">
-            <br> <div id="divStatusLeitura8" style="opacity: 50%;">Incompleto</div>
-          </div>
-        </div>
-        
+        <img src="./../imagens/avatar-svgrepo-com.png" alt="" style="width: 40px;">
       </div>
     </div>
   </div>
-    
+  <div>
+
+  </div>
+
+  <div class="banner">
+    <div class="container">
+      <div class="hello">
+        <h3>Progresso de leitura de <span id="b_usuario">usuário</span></h3>
+      </div>
+      <img src="./imagens/DC-whitelogo.png" alt="" style="height: 90px;">
+    </div>
+  </div>
+  <div class="box1">
+
+    <div class="contaBox">
+
+      <div class="graficoIPT">
+        <h2>Progresso de Leitura</h2>
+        <div class="grafico">
+          <div id="divMensagem">
+          </div>
+          <canvas id="myChart"></canvas>
+        </div>
+        <div>
+          <input type="number" id="iptCapitulo" placeholder="Capítulo atual">
+          <button onclick="progresso()">Ver Progresso</button>
+        </div>
+      </div>
+
+      <div class="CBbox">
+
+        <div class="checkboxBox">
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 1: <br> Chegada dos Novatos <br> (1-26) <br> <input type="checkbox" onclick="status1()"
+                id="checkbox1" class="CHKbox">
+              <br>
+              <div id="divStatusLeitura" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 2: <br> Domínio da Guerra <br> (27-50) <br> <input type="checkbox" onclick="status2()" id="checkbox2"
+                class="CHKbox">
+              <br>
+              <div id="divStatusLeitura2" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="checkboxBox">
+
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 3: <br> Grande Guerra de Estrelas <br> (51-100) <br> <input type="checkbox" onclick="status3()"
+                id="checkbox3" class="CHKbox">
+              <br>
+              <div id="divStatusLeitura3" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 4: <br> Guerra Civil de Seul <br> (101-190) <br> <input type="checkbox" onclick="status4()"
+                id="checkbox4" class="CHKbox">
+              <br>
+              <div id="divStatusLeitura4" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="checkboxBox">
+
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 5: <br> Candidatos à Transcendência<br>(191-260) <br> <input type="checkbox" onclick="status5()"
+                id="checkbox5" class="CHKbox">
+              <br>
+              <div id="divStatusLeitura5" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 6: <br> Novo Mundo <br> (261-348) <br> <input type="checkbox" onclick="status6()" id="checkbox6"
+                class="CHKbox">
+              <br>
+              <div id="divStatusLeitura6" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="checkboxBox">
+
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 7: <br> Cenário Final<br> (349-452) <br> <input type="checkbox" onclick="status7()" id="checkbox7"
+                class="CHKbox">
+              <br>
+              <div id="divStatusLeitura7" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+          <div class="checkboxDiv">
+            <div class="checkbox">
+              Arco 8: <br> Epilogo<br> (453-551) <br> <input type="checkbox" onclick="status8()" id="checkbox8"
+                class="CHKbox">
+              <br>
+              <div id="divStatusLeitura8" style="opacity: 50%;">Incompleto</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
 </body>
+
 </html>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 
 <script>
-          b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    function status1(){
-      var checkboxValue = document.getElementById('checkbox1');
-      if(checkboxValue.checked == false){
-        divStatusLeitura.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura.innerHTML = 'Completo'
-      }
+  function status1() {
+    var checkboxValue = document.getElementById('checkbox1');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura.innerHTML = 'Completo'
     }
+  }
 
-    function status2(){
-      var checkboxValue = document.getElementById('checkbox2');
-      if(checkboxValue.checked == false){
-        divStatusLeitura2.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura2.innerHTML = 'Completo'
-      }
+  function status2() {
+    var checkboxValue = document.getElementById('checkbox2');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura2.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura2.innerHTML = 'Completo'
     }
+  }
 
-    function status3(){
-      var checkboxValue = document.getElementById('checkbox3');
-      if(checkboxValue.checked == false){
-        divStatusLeitura3.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura3.innerHTML = 'Completo'
-      }
+  function status3() {
+    var checkboxValue = document.getElementById('checkbox3');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura3.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura3.innerHTML = 'Completo'
     }
+  }
 
-    function status4(){
-      var checkboxValue = document.getElementById('checkbox4');
-      if(checkboxValue.checked == false){
-        divStatusLeitura4.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura4.innerHTML = 'Completo'
-      }
+  function status4() {
+    var checkboxValue = document.getElementById('checkbox4');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura4.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura4.innerHTML = 'Completo'
     }
+  }
 
-    function status5(){
-      var checkboxValue = document.getElementById('checkbox5');
-      if(checkboxValue.checked == false){
-        divStatusLeitura5.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura5.innerHTML = 'Completo'
-      }
+  function status5() {
+    var checkboxValue = document.getElementById('checkbox5');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura5.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura5.innerHTML = 'Completo'
     }
+  }
 
-    function status6(){
-      var checkboxValue = document.getElementById('checkbox6');
-      if(checkboxValue.checked == false){
-        divStatusLeitura6.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura6.innerHTML = 'Completo'
-      }
+  function status6() {
+    var checkboxValue = document.getElementById('checkbox6');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura6.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura6.innerHTML = 'Completo'
     }
+  }
 
-    function status7(){
-      var checkboxValue = document.getElementById('checkbox7');
-      if(checkboxValue.checked == false){
-        divStatusLeitura7.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura7.innerHTML = 'Completo'
-      }
+  function status7() {
+    var checkboxValue = document.getElementById('checkbox7');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura7.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura7.innerHTML = 'Completo'
     }
+  }
 
-    function status8(){
-      var checkboxValue = document.getElementById('checkbox8');
-      if(checkboxValue.checked == false){
-        divStatusLeitura8.innerHTML = 'Incompleto'
-      } else {
-        divStatusLeitura8.innerHTML = 'Completo'
-      }
+  function status8() {
+    var checkboxValue = document.getElementById('checkbox8');
+    if (checkboxValue.checked == false) {
+      divStatusLeitura8.innerHTML = 'Incompleto'
+    } else {
+      divStatusLeitura8.innerHTML = 'Completo'
     }
+  }
 
-    divMensagem.innerHTML = 'Insira o número do Capítulo que você está'
-
-
-
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
+  divMensagem.innerHTML = 'Insira o número do Capítulo que você está'
 
 
 
+  // O gráfico é construído com três funções:
+  // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+  // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+  // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+  // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+  // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+  // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+  //     Para ajustar o "select", ajuste o comando sql em src/models
 
 
-//     function obterDadosGrafico(idUsuario) {
-
-//       alterarTitulo(idUsuario)
-
-//       if (proximaAtualizacao != undefined) {
-//           clearTimeout(proximaAtualizacao);
-//       }
-//       // fetch -> busca algo do back-end, trazendo os dados pela primeira vez! uma função chamando a outra
-//       // post -> inserindo
-//       fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-//           if (response.ok) {
-//               response.json().then(function (resposta) {
-//                   console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-//                   resposta.reverse();
-
-//                  plotarGrafico(resposta, idAquario);
-//         });
-//     } else {
-//         console.error('Nenhum dado encontrado ou erro na API');
-//     }
-// })
-//     .catch(function (error) {
-//         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//     });
-// }
 
 
-    function progresso(){
-      data = [] 
-      var idUsuario = sessionStorage.ID_USUARIO;
-      var capitulo = Number(iptCapitulo.value);
 
-      if(capitulo > 551){
-        alert('O livro tem somente 551 capítlos! Insira um valor válido')
-      } else if(capitulo < 1){
-        alert('O livro não tem capítulos negativos! Insira um valor válido.')
-      } else {
+  //     function obterDadosGrafico(idUsuario) {
 
-        var porcentagemLeitura = (capitulo/551) * 100 
+  //       alterarTitulo(idUsuario)
 
-        divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
+  //       if (proximaAtualizacao != undefined) {
+  //           clearTimeout(proximaAtualizacao);
+  //       }
+  //       // fetch -> busca algo do back-end, trazendo os dados pela primeira vez! uma função chamando a outra
+  //       // post -> inserindo
+  //       fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+  //           if (response.ok) {
+  //               response.json().then(function (resposta) {
+  //                   console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+  //                   resposta.reverse();
+
+  //                  plotarGrafico(resposta, idAquario);
+  //         });
+  //     } else {
+  //         console.error('Nenhum dado encontrado ou erro na API');
+  //     }
+  // })
+  //     .catch(function (error) {
+  //         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+  //     });
+  // }
+
+
+  function progresso() {
+    data = []
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var capitulo = Number(iptCapitulo.value);
+
+    if (capitulo > 551) {
+      alert('O livro tem somente 551 capítlos! Insira um valor válido')
+    } else if (capitulo < 1) {
+      alert('O livro não tem capítulos negativos! Insira um valor válido.')
+    } else {
+
+      var porcentagemLeitura = (capitulo / 551) * 100
+
+      divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
+
+      fetch(`/progresso/progresso/${idUsuario}/${capitulo}`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(corpo)
+      }).then(function (resposta) {
+
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+        } else if (resposta.status == 404) {
+          window.alert("Deu 404!");
+        } else {
+          throw ("Houve um erro" + resposta.status);
+        }
+      }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+
+
+      var corpo = {
+        capitulo: Number(iptCapitulo.value),
+        idUsuario: sessionStorage.ID_USUARIO
+      }
+
+      return false;
+    }
+  }
+
+
+
+  atualizarGrafico()
+  function atualizarGrafico() {
+    var usuarioVar = sessionStorage.NOME_USUARIO;
+    var emailVar = sessionStorage.EMAIL_USUARIO;
+    fetch("/progresso/obterProgresso", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        usuarioServer: usuarioVar,
+        emailServer: emailVar
+      })
+    }).then(function (resposta) {
+
+      //  resposta.json().then(valor=>{
+      //   alert(valor)
+      //  })
+
+      resposta.json().then(valor => {
+        console.log(valor[0].capitulo)
         const ctx = document.getElementById('myChart');
-
-        fetch(`/progresso/progresso/${idUsuario}/${capitulo}`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(corpo)
-        }).then(function (resposta) {
-    
-            console.log("resposta: ", resposta);
-    
-            if (resposta.ok) {
-                
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro" + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    
-        
         const data = {
-        labels: ['Lido', 'Não Lido'],
+          labels: ['Lido', 'Não Lido'],
           datasets: [{
-              label: 'Capítulos',
-              data: [capitulo, (551 - capitulo)],
-              borderWidth: 2,
-              backgroundColor: [
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 0, 0, 0.1)'
-                  ],
-              circumference: 270,
-              rotation: 225,
-              radius: 200
-            }]
-          };
-
-        const config = {
-        type: 'doughnut',
-        data: data,
+            label: 'Capítulos',
+            data: [valor[0].capitulo, 551 - valor[0].capitulo],
+            borderWidth: 2,
+            backgroundColor: [
+              'rgba(1, 1, 1, 1)',
+              'rgba(1, 0, 0, 0.1)'
+            ],
+            circumference: 270,
+            rotation: 225,
+            radius: 200
+          }]
         };
 
+        
+        
+        const config = {
+          type: 'doughnut',
+          data: data,
+        };
         new Chart(ctx, config)
+      })
 
-        var corpo = {
-            capitulo: Number(iptCapitulo.value),
-            idUsuario: sessionStorage.ID_USUARIO
-        }
-
-        return false;
-      }
-    }
+      
+    }).catch(function (erro) {
+      console.log(erro);
+    })
 
 
-
-    function atualizarGrafico(idUsuario, data, myChart) {
-
-        fetch(`/progresso/${idUsuario}/${capitulo}`, { cache: 'no-store' }).then(function (response) {
-          if (response.ok) {
-            response.json().then(function (novoRegistro) {
-
-            obterdados(idUsuario);
-            // alertar(novoRegistro, idAquario);
-            console.log(`Dados recebidos: ${JSON.stringify(capitulo)}`);
-            console.log(`Dados atuais do gráfico:`);
-            console.log(dados);
-
-                // tirando e colocando valores no gráfico
-                dados.labels.shift(); // apagar o primeiro
-                dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                dados.datasets[0].data.push(novoRegistro[0].capitulo); // incluir uma nova medida de umidade
-
-                myChart.update();
-
-            // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-            proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 1000);
-        });
-    } else {
-        console.error('Erro');
-        // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-        proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
-    }
-})
-    .catch(function (error) {
-        console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    });
-
-}
-  </script>
-   
+  }
+</script>
