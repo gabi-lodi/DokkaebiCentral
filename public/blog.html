@@ -51,40 +51,25 @@
 </body>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-const myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['KDJ', 'YJH', 'HSY', 'LHS', 'JHW', 'LHJ', 'YSG', 'SYS', 'LGY', 'N/D'],
-        datasets: [{
-            label: 'Personagens Mais Populares',
-            data: [12, 19, 3, 5, 2, 3, 1, 1, 1, 1 ],
-            backgroundColor: [
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)'
-            ],
-            
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-   
 
-</script>
-<script>
+atualizarGrafico()
+function atualizarGrafico() {
+  var usuarioVar = sessionStorage.NOME_USUARIO;
+  var emailVar = sessionStorage.EMAIL_USUARIO;
+
+  fetch("/favs/obterFavs", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      usuarioServer: usuarioVar,
+      emailServer: emailVar
+    })
+  }).then(function (resposta) {
+    resposta.json().then(valor => {
+      console.log(valor[0].capitulo);
+
     const ctx2 = document.getElementById('myChart2').getContext('2d');
     const myChart2 = new Chart(ctx2, {
     type: 'bar',
@@ -114,6 +99,11 @@ const myChart = new Chart(ctx, {
         }
     }
 });
-   
+
+    });
+  }).catch(function (erro) {
+    console.log(erro);
+  });
+}
 
 </script>

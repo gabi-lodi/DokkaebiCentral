@@ -20,6 +20,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var medidasRouter = require("./src/routes/medidas");
 var feedRouter = require("./src/routes/feed");
 var progressoRouter = require("./src/routes/progresso");
+var favsRouter = require("./src/routes/favs")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +33,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/medidas", medidasRouter);
 app.use("/feed", feedRouter);
 app.use("/progresso", progressoRouter);
+app.use("/favs", favsRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
