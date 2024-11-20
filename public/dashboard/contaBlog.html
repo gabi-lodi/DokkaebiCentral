@@ -21,7 +21,7 @@
             <img src="./../imagens/star.png" alt="" style="height: 20px;">
             </div>
             <a href="./contaHome.html">Home</a>
-            <a href="./starSystem.html">Feed</a>
+            <a href="./starSystem.html">Sobre ORV</a>
         </div>
         
         <div class="navbarRight">
@@ -165,14 +165,6 @@
                         divDescricao.className = "publicacao-descricao";
     
                         divButtons.className = "div-buttons"
-    
-                        btnEditar.className = "publicacao-btn-editar"
-                        btnEditar.id = "btnEditar" + publicacao.idAviso;
-                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
-    
-                        btnDeletar.className = "publicacao-btn-editar"
-                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
-                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
     
                         divPublicacao.appendChild(spanID);
                         divPublicacao.appendChild(spanNome);

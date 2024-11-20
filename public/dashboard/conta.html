@@ -21,7 +21,7 @@
     <div class="navbarMiddle">
       <a href="./contaBlog.html">Postar</a>
       <a href="./contaHome.html">Home</a>
-      <a href="./starSystem.html">Feed</a>
+      <a href="./starSystem.html">Sobre ORV</a>
     </div>
 
     <div class="navbarRight">
@@ -287,7 +287,7 @@
     var capitulo = Number(iptCapitulo.value);
 
     if (capitulo > 551) {
-      alert('O livro tem somente 551 capítlos! Insira um valor válido')
+      alert('O livro tem somente 551 capítulos! Insira um valor válido')
     } else if (capitulo < 1) {
       alert('O livro não tem capítulos negativos! Insira um valor válido.')
     } else {
@@ -324,6 +324,8 @@
         idUsuario: sessionStorage.ID_USUARIO
       }
 
+      atualizarNovoProgresso()
+
       return false;
     }
   }
@@ -331,10 +333,67 @@
 
 
   atualizarGrafico()
-  function atualizarGrafico() {
-    var usuarioVar = sessionStorage.NOME_USUARIO;
-    var emailVar = sessionStorage.EMAIL_USUARIO;
-    fetch("/progresso/obterProgresso", {
+// Variável global para armazenar a instância do gráfico
+let chartInstance = null;
+
+function atualizarGrafico() {
+  var usuarioVar = sessionStorage.NOME_USUARIO;
+  var emailVar = sessionStorage.EMAIL_USUARIO;
+
+  fetch("/progresso/obterProgresso", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      usuarioServer: usuarioVar,
+      emailServer: emailVar
+    })
+  }).then(function (resposta) {
+    resposta.json().then(valor => {
+      console.log(valor[0].capitulo);
+
+      const ctx = document.getElementById('myChart');
+      const data = {
+        labels: ['Lido', 'Não Lido'],
+        datasets: [{
+          label: 'Capítulos',
+          data: [valor[0].capitulo, 551 - valor[0].capitulo],
+          borderWidth: 2,
+          backgroundColor: [
+            'rgba(1, 1, 1, 1)',
+            'rgba(1, 0, 0, 0.1)'
+          ],
+          circumference: 270,
+          rotation: 225,
+          radius: 200
+        }]
+      };
+
+      if (chartInstance) {
+        // Atualiza o gráfico existente
+        chartInstance.data = data;
+        chartInstance.update();
+      } else {
+        // Cria o gráfico pela primeira vez
+        chartInstance = new Chart(ctx, {
+          type: 'doughnut',
+          data: data
+        });
+      }
+    });
+  }).catch(function (erro) {
+    console.log(erro);
+  });
+}
+
+
+    function atualizarNovoProgresso(){
+      var idUsuario = sessionStorage.ID_USUARIO;
+      var usuarioVar = sessionStorage.NOME_USUARIO;
+      var emailVar = sessionStorage.EMAIL_USUARIO;
+      var capitulo = Number(iptCapitulo.value);
+      fetch("/progresso/obterProgresso", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -344,44 +403,23 @@
         emailServer: emailVar
       })
     }).then(function (resposta) {
+    if (resposta.ok) {
+      resposta.json().then(function (dados) {
+        // Atualizar o progresso no front-end com os novos dados
+        var porcentagemLeitura = (capitulo / 551) * 100;
 
-      //  resposta.json().then(valor=>{
-      //   alert(valor)
-      //  })
+        divMensagem.innerHTML = `Seu progresso foi atualizado: você leu ${porcentagemLeitura.toFixed(2)}% do livro!`;
 
-      resposta.json().then(valor => {
-        console.log(valor[0].capitulo)
-        const ctx = document.getElementById('myChart');
-        const data = {
-          labels: ['Lido', 'Não Lido'],
-          datasets: [{
-            label: 'Capítulos',
-            data: [valor[0].capitulo, 551 - valor[0].capitulo],
-            borderWidth: 2,
-            backgroundColor: [
-              'rgba(1, 1, 1, 1)',
-              'rgba(1, 0, 0, 0.1)'
-            ],
-            circumference: 270,
-            rotation: 225,
-            radius: 200
-          }]
-        };
-
-        
-        
-        const config = {
-          type: 'doughnut',
-          data: data,
-        };
-        new Chart(ctx, config)
-      })
-
-      
-    }).catch(function (erro) {
-      console.log(erro);
-    })
-
+        // Atualizar o gráfico para refletir o novo progresso
+        atualizarGrafico(); 
+      });
+    } else {
+      console.error(`Erro ao obter progresso: ${resposta.status}`);
+    }
+  }).catch(function (erro) {
+    console.error(`Erro na atualização do progresso: ${erro}`);
+  });
+    
 
   }
 </script>

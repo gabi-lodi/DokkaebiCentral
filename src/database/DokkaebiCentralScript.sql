@@ -92,6 +92,8 @@ select * from ProgressoLeitura;
 
 SELECT p.titulo, p.descricao, u.nome FROM Postagem as p JOIN Usuario as u ON p.fkUsuario = u.idUsuario;
 
+SELECT COUNT(idUsuario) FROM Usuario GROUP BY fkPersoFav;
+
 SELECT COUNT(idUsuario) FROM Usuario WHERE fkPersoFav = 1;
 SELECT COUNT(idUsuario) FROM Usuario WHERE fkPersoFav = 2;
 SELECT COUNT(idUsuario) FROM Usuario WHERE fkPersoFav = 3;
