@@ -1,6 +1,5 @@
 var feedModel = require("../models/feedModel");
 
-
 function publicar(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
@@ -29,11 +28,27 @@ function publicar(req, res) {
     }
 }
 
+function mostrar(req, res) {
+    console.log("Função mostrar foi chamada");
+    feedModel.mostrar()
+        .then((resultado) => {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum post encontrado.");
+            }
+        })
+        .catch((erro) => {
+            console.error("Erro ao buscar posts: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
 module.exports = {
-    // listar,
-    // listarPorUsuario,
     // pesquisarDescricao,
     publicar,
     // editar,
     // deletar
+    mostrar
 }

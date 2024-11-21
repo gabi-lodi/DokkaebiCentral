@@ -63,96 +63,19 @@
         </div>
       </div>
 
-      <div class="CBbox">
-
-        <div class="checkboxBox">
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 1: <br> Chegada dos Novatos <br> (1-26) <br> <input type="checkbox" onclick="status1()"
-                id="checkbox1" class="CHKbox">
-              <br>
-              <div id="divStatusLeitura" style="opacity: 50%;">Incompleto</div>
-            </div>
+      <div class="KPIBox">
+        <div class="KPIContent">
+          <div class="legendaKPI">
+            postagens:
           </div>
-
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 2: <br> Domínio da Guerra <br> (27-50) <br> <input type="checkbox" onclick="status2()" id="checkbox2"
-                class="CHKbox">
-              <br>
-              <div id="divStatusLeitura2" style="opacity: 50%;">Incompleto</div>
-            </div>
+          <div id="qtdPostagens">00</div>
+          <div>|</div>
+          <div class="legendaKPI">
+            nao sei:
           </div>
-
-        </div>
-
-        <div class="checkboxBox">
-
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 3: <br> Grande Guerra de Estrelas <br> (51-100) <br> <input type="checkbox" onclick="status3()"
-                id="checkbox3" class="CHKbox">
-              <br>
-              <div id="divStatusLeitura3" style="opacity: 50%;">Incompleto</div>
-            </div>
-          </div>
-
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 4: <br> Guerra Civil de Seul <br> (101-190) <br> <input type="checkbox" onclick="status4()"
-                id="checkbox4" class="CHKbox">
-              <br>
-              <div id="divStatusLeitura4" style="opacity: 50%;">Incompleto</div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="checkboxBox">
-
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 5: <br> Candidatos à Transcendência<br>(191-260) <br> <input type="checkbox" onclick="status5()"
-                id="checkbox5" class="CHKbox">
-              <br>
-              <div id="divStatusLeitura5" style="opacity: 50%;">Incompleto</div>
-            </div>
-          </div>
-
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 6: <br> Novo Mundo <br> (261-348) <br> <input type="checkbox" onclick="status6()" id="checkbox6"
-                class="CHKbox">
-              <br>
-              <div id="divStatusLeitura6" style="opacity: 50%;">Incompleto</div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="checkboxBox">
-
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 7: <br> Cenário Final<br> (349-452) <br> <input type="checkbox" onclick="status7()" id="checkbox7"
-                class="CHKbox">
-              <br>
-              <div id="divStatusLeitura7" style="opacity: 50%;">Incompleto</div>
-            </div>
-          </div>
-
-          <div class="checkboxDiv">
-            <div class="checkbox">
-              Arco 8: <br> Epilogo<br> (453-551) <br> <input type="checkbox" onclick="status8()" id="checkbox8"
-                class="CHKbox">
-              <br>
-              <div id="divStatusLeitura8" style="opacity: 50%;">Incompleto</div>
-            </div>
-          </div>
-
+          <div id="pctLeitura">00</div>
         </div>
       </div>
-    </div>
 
 </body>
 
@@ -161,124 +84,6 @@
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-  function status1() {
-    var checkboxValue = document.getElementById('checkbox1');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura.innerHTML = 'Completo'
-    }
-  }
-
-  function status2() {
-    var checkboxValue = document.getElementById('checkbox2');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura2.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura2.innerHTML = 'Completo'
-    }
-  }
-
-  function status3() {
-    var checkboxValue = document.getElementById('checkbox3');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura3.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura3.innerHTML = 'Completo'
-    }
-  }
-
-  function status4() {
-    var checkboxValue = document.getElementById('checkbox4');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura4.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura4.innerHTML = 'Completo'
-    }
-  }
-
-  function status5() {
-    var checkboxValue = document.getElementById('checkbox5');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura5.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura5.innerHTML = 'Completo'
-    }
-  }
-
-  function status6() {
-    var checkboxValue = document.getElementById('checkbox6');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura6.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura6.innerHTML = 'Completo'
-    }
-  }
-
-  function status7() {
-    var checkboxValue = document.getElementById('checkbox7');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura7.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura7.innerHTML = 'Completo'
-    }
-  }
-
-  function status8() {
-    var checkboxValue = document.getElementById('checkbox8');
-    if (checkboxValue.checked == false) {
-      divStatusLeitura8.innerHTML = 'Incompleto'
-    } else {
-      divStatusLeitura8.innerHTML = 'Completo'
-    }
-  }
-
-  divMensagem.innerHTML = 'Insira o número do Capítulo que você está'
-
-
-
-  // O gráfico é construído com três funções:
-  // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-  // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-  // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-  // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-  // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-  // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-  //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-  //     Para ajustar o "select", ajuste o comando sql em src/models
-
-
-
-
-
-  //     function obterDadosGrafico(idUsuario) {
-
-  //       alterarTitulo(idUsuario)
-
-  //       if (proximaAtualizacao != undefined) {
-  //           clearTimeout(proximaAtualizacao);
-  //       }
-  //       // fetch -> busca algo do back-end, trazendo os dados pela primeira vez! uma função chamando a outra
-  //       // post -> inserindo
-  //       fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-  //           if (response.ok) {
-  //               response.json().then(function (resposta) {
-  //                   console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-  //                   resposta.reverse();
-
-  //                  plotarGrafico(resposta, idAquario);
-  //         });
-  //     } else {
-  //         console.error('Nenhum dado encontrado ou erro na API');
-  //     }
-  // })
-  //     .catch(function (error) {
-  //         console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-  //     });
-  // }
 
 
   function progresso() {
@@ -333,67 +138,14 @@
 
 
   atualizarGrafico()
-// Variável global para armazenar a instância do gráfico
-let chartInstance = null;
+  // Variável global para armazenar a instância do gráfico
+  let chartInstance = null;
 
-function atualizarGrafico() {
-  var usuarioVar = sessionStorage.NOME_USUARIO;
-  var emailVar = sessionStorage.EMAIL_USUARIO;
+  function atualizarGrafico() {
+    var usuarioVar = sessionStorage.NOME_USUARIO;
+    var emailVar = sessionStorage.EMAIL_USUARIO;
 
-  fetch("/progresso/obterProgresso", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      usuarioServer: usuarioVar,
-      emailServer: emailVar
-    })
-  }).then(function (resposta) {
-    resposta.json().then(valor => {
-      console.log(valor[0].capitulo);
-
-      const ctx = document.getElementById('myChart');
-      const data = {
-        labels: ['Lido', 'Não Lido'],
-        datasets: [{
-          label: 'Capítulos',
-          data: [valor[0].capitulo, 551 - valor[0].capitulo],
-          borderWidth: 2,
-          backgroundColor: [
-            'rgba(1, 1, 1, 1)',
-            'rgba(1, 0, 0, 0.1)'
-          ],
-          circumference: 270,
-          rotation: 225,
-          radius: 200
-        }]
-      };
-
-      if (chartInstance) {
-        // Atualiza o gráfico existente
-        chartInstance.data = data;
-        chartInstance.update();
-      } else {
-        // Cria o gráfico pela primeira vez
-        chartInstance = new Chart(ctx, {
-          type: 'doughnut',
-          data: data
-        });
-      }
-    });
-  }).catch(function (erro) {
-    console.log(erro);
-  });
-}
-
-
-    function atualizarNovoProgresso(){
-      var idUsuario = sessionStorage.ID_USUARIO;
-      var usuarioVar = sessionStorage.NOME_USUARIO;
-      var emailVar = sessionStorage.EMAIL_USUARIO;
-      var capitulo = Number(iptCapitulo.value);
-      fetch("/progresso/obterProgresso", {
+    fetch("/progresso/obterProgresso", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -403,23 +155,75 @@ function atualizarGrafico() {
         emailServer: emailVar
       })
     }).then(function (resposta) {
-    if (resposta.ok) {
-      resposta.json().then(function (dados) {
-        // Atualizar o progresso no front-end com os novos dados
-        var porcentagemLeitura = (capitulo / 551) * 100;
+      resposta.json().then(valor => {
+        console.log(valor[0].capitulo);
 
-        divMensagem.innerHTML = `Seu progresso foi atualizado: você leu ${porcentagemLeitura.toFixed(2)}% do livro!`;
+        const ctx = document.getElementById('myChart');
+        const data = {
+          labels: ['Lido', 'Não Lido'],
+          datasets: [{
+            label: 'Capítulos',
+            data: [valor[0].capitulo, 551 - valor[0].capitulo],
+            borderWidth: 2,
+            backgroundColor: [
+              'rgba(1, 1, 1, 1)',
+              'rgba(1, 0, 0, 0.1)'
+            ],
+            circumference: 270,
+            rotation: 225,
+            radius: 150
+          }]
+        };
 
-        // Atualizar o gráfico para refletir o novo progresso
-        atualizarGrafico(); 
+        if (chartInstance) {
+          // Atualiza o gráfico existente
+          chartInstance.data = data;
+          chartInstance.update();
+        } else {
+          // Cria o gráfico pela primeira vez
+          chartInstance = new Chart(ctx, {
+            type: 'doughnut',
+            data: data
+          });
+        }
       });
-    } else {
-      console.error(`Erro ao obter progresso: ${resposta.status}`);
-    }
-  }).catch(function (erro) {
-    console.error(`Erro na atualização do progresso: ${erro}`);
-  });
-    
+    }).catch(function (erro) {
+      console.log(erro);
+    });
+  }
+
+
+  function atualizarNovoProgresso() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    var usuarioVar = sessionStorage.NOME_USUARIO;
+    var emailVar = sessionStorage.EMAIL_USUARIO;
+    var capitulo = Number(iptCapitulo.value);
+    fetch("/progresso/obterProgresso", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        usuarioServer: usuarioVar,
+        emailServer: emailVar
+      })
+    }).then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(function (dados) {
+          // Atualizar o progresso no front-end com os novos dados
+          var porcentagemLeitura = (capitulo / 551) * 100;
+
+          divMensagem.innerHTML = `Seu progresso foi atualizado: você leu ${porcentagemLeitura.toFixed(2)}% do livro!`;
+
+          // Atualizar o gráfico para refletir o novo progresso
+          atualizarGrafico();
+        });
+      } else {
+        console.error(`Erro ao obter progresso: ${resposta.status}`);
+      }
+    }).catch(function (erro) {
+      console.error(`Erro na atualização do progresso: ${erro}`);
+    });
 
   }
 </script>

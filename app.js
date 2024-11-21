@@ -20,7 +20,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var medidasRouter = require("./src/routes/medidas");
 var feedRouter = require("./src/routes/feed");
 var progressoRouter = require("./src/routes/progresso");
-var favsRouter = require("./src/routes/favs")
+var favsRouter = require("./src/routes/favs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

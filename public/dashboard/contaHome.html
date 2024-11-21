@@ -9,6 +9,7 @@
 
     
 </head>
+<body onload="carregarFeed()" style="background-color: #161618;"></body>
 <body>
 
     <div class="navbar">
@@ -44,7 +45,6 @@
 
     <div class="banner">
         <div class="container">
-                <img src="./imagens/DC-whitelogo.png" alt="" style="height: 90px;">
                 <div class="hello">
                     <h3>Bem vindo(a), <span id="b_usuario">usuário</span>!</h3>
                 </div>
@@ -52,10 +52,59 @@
     </div>
 
 
+    <div class="postsContainer">
+        <div id="feed_container" class="feed-container">
+        </div>
+    </div>
+
 </div>
 </body>
 </html>
 
 <script>
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>
+
+<script>
+
+function carregarFeed() {
+    fetch('/feed/mostrar')
+        .then((response) => {
+            if (!response.ok) throw new Error("Erro ao carregar posts!");
+            return response.json();
+        })
+        .then((posts) => {
+            exibirPosts(posts);
+        })
+        .catch((error) => {
+            console.error("Erro ao carregar o feed: ", error);
+        });
+}
+
+function exibirPosts(posts) {
+    const feedContainer = document.getElementById('feed_container');
+    feedContainer.innerHTML = ''; // Limpa o container
+
+    if (posts.length === 0) {
+        feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
+        return;
+    }
+
+    posts.forEach((post) => {
+        const postElement = document.createElement('div');
+        postElement.className = 'post';
+
+        feedContainer.innerHTML += `
+        <div class="postagem">
+            <h3>${post.titulo}</h3>
+            <p>${post.descricao}</p>
+            <span>Postado por: ${post.nome}</span>
+        </div>
+        `;
+
+        feedContainer.appendChild(postElement);
+    });
+}
+
+
 </script>

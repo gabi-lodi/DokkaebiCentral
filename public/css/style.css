@@ -323,10 +323,25 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
     flex-direction: row;
     justify-content: center;
     position: relative;
+    background-color: black;
 }
 
 .imageBox{
     padding: 20px;
+    color: black;
+}
+
+/* .imageContent{
+    display: flex;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.imageContent:hover{
+    opacity: 0.7;
+} */
+
+.imageContent{
+    color: white;
 }
 
 .imageContent img{

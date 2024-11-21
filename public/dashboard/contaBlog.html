@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="imgsheet" href="./../imagens">
     <title>Document</title>
 </head>
+
 <body>
     <div class="navbar">
 
@@ -17,13 +19,13 @@
 
         <div class="navbarMiddle">
             <div style="display: flex; align-items: center;">
-            <b><a href="./contaBlog.html" style="text-decoration: underline;">Postar</a></b>
-            <img src="./../imagens/star.png" alt="" style="height: 20px;">
+                <b><a href="./contaBlog.html" style="text-decoration: underline;">Postar</a></b>
+                <img src="./../imagens/star.png" alt="" style="height: 20px;">
             </div>
             <a href="./contaHome.html">Home</a>
             <a href="./starSystem.html">Sobre ORV</a>
         </div>
-        
+
         <div class="navbarRight">
             <div style="display: flex; align-items: center;">
                 <a href="./conta.html">Conta</a>
@@ -39,151 +41,90 @@
         </div>
     </div>
 
-        <div class="box1">
+    <div class="box1">
+        <div class="Feed">
+            <div id="alerta"></div>
+            <div class="Postagem">
+                <div class="div-form">
+                    <h1>Nova Postagem</h1>
+                    <form id="form_postagem" method="post" onsubmit="return publicar()">
+                        <label>
+                            Título:
+                            <input name="titulo" id="titulo" maxlength="100" type="text">
+                        </label>
+                        <br>
+                        <br>
+                        <label>
+                            Conteúdo
+                            <br>
+                            <textarea name="descricao" id="textarea_descricao" maxlength="300" rows="5"></textarea>
+                        </label>
+                        <br>
+                        <br>
+                        <button>Enviar</button>
+                    </form>
+                </div>
 
-            <div class="Feed">
-                <div id="alerta"></div>
-                <div class="Postagem">
-                    
-                    <div class="div-form">
-                        
-                        <h1>Nova Postagem</h1>
-                        <form id="form_postagem" method="post" onsubmit="return publicar()">
-                            <label>
-                                Título:
-                                <input name="titulo" id="titulo" maxlength="100" type="text">
-                            </label>
-                            <br>
-                            <br>
-                            <label>
-                                Conteúdo
-                                <br>
-                                <textarea name="descricao" id="textarea_descricao" maxlength="300" rows="5"></textarea>
-                            </label>
-                            <br>
-                            <br>
-                            <button>Enviar</button>
-                        </form>
 
-                    </div>
-                    <div class="div-results">
-                        <div id="feed_container" class="feed-container">
-                        </div>
+                <div class="div-results">
+                    <div id="feed_container" class="feed-container">
                     </div>
                 </div>
+
+
             </div>
-    
+        </div>
+
 </body>
+
 </html>
 <script>
 
-    
+
     function limparFormulario() {
         document.getElementById("form_postagem").reset();
     }
-    
+
     function publicar() {
         var idUsuario = sessionStorage.ID_USUARIO;
-        
+        console.log("ID do usuário: ", idUsuario);
+
+        // Dados do corpo da requisição
         var corpo = {
             titulo: form_postagem.titulo.value,
             descricao: form_postagem.descricao.value
+        };
+
+        // Verifica se os campos de título e descrição estão vazios
+        if (form_postagem.titulo.value == '' || form_postagem.descricao.value == '') {
+            alert('Para fazer uma postagem, preencha os campos abaixo.');
+            return false; // Impede o envio do formulário
         }
 
-        if(form_postagem.titulo.value == '' || form_postagem.descricao.value == ''){
-            alert('Para fazer uma postagem, preencha os campos abaixo.')
-        }
-            
-            fetch(`/feed/publicar/${idUsuario}`, {
-                method: "post",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(corpo)
-            }).then(function (resposta) {
-        
+        // Realiza o fetch
+        fetch(`/feed/publicar/${idUsuario}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        })
+            .then(function (resposta) {
                 console.log("resposta: ", resposta);
-                
                 if (resposta.ok) {
                     window.alert(sessionStorage.NOME_USUARIO + ', seu post foi realizado com sucesso!');
                     limparFormulario();
                 } else if (resposta.status == 404) {
                     window.alert("Deu 404!");
                 } else {
-                    throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+                    throw new Error("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
                 }
-            }).catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
             });
-        
-            return false;
 
-            
+        return false; // Evita o recarregamento da página
     }
-    
-    function atualizarFeed() {
-        fetch("/feed/publicar").then(function (resposta) {
-            if (resposta.ok) {
-                if (resposta.status == 204) {
-                    var feed = document.getElementById("feed_container");
-                    var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
-                    feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
-                }
-    
-                resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-    
-                    var feed = document.getElementById("feed_container");
-                    feed.innerHTML = "";
-                    for (let i = 0; i < resposta.length; i++) {
-                        var publicacao = resposta[i];
-    
-                        // criando e manipulando elementos do HTML via JavaScript
-                        var divPublicacao = document.createElement("div");
-                        var spanID = document.createElement("span");
-                        var spanTitulo = document.createElement("span");
-                        var spanNome = document.createElement("span");
-                        var divDescricao = document.createElement("div");
-                        var divButtons = document.createElement("div");
-                        var btnEditar = document.createElement("button");
-                        var btnDeletar = document.createElement("button");
-    
-    
-                        spanID.innerHTML = "ID: <b>" + publicacao.idAviso + "</b>";
-                        spanTitulo.innerHTML = "Título: <b>" + publicacao.titulo + "</b>";
-                        spanNome.innerHTML = "Autor: <b>" + publicacao.nome + "</b>";
-                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
-                        btnEditar.innerHTML = "Editar";
-                        btnDeletar.innerHTML = "Deletar";
-    
-                        divPublicacao.className = "publicacao";
-                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
-                        spanNome.className = "publicacao-nome";
-                        spanTitulo.className = "publicacao-titulo";
-                        divDescricao.className = "publicacao-descricao";
-    
-                        divButtons.className = "div-buttons"
-    
-                        divPublicacao.appendChild(spanID);
-                        divPublicacao.appendChild(spanNome);
-                        divPublicacao.appendChild(spanTitulo);
-                        divPublicacao.appendChild(divDescricao);
-                        divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
-                        feed.appendChild(divPublicacao);
-                    }
-    
-                    finalizarAguardar();
-                });
-            } else {
-                throw ('Houve um erro na API!');
-            }
-        }).catch(function (resposta) {
-            console.error(resposta);
-            finalizarAguardar();
-        });
-    }
+
 </script>
