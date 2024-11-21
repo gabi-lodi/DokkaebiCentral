@@ -18,7 +18,37 @@ function mostrar(){
     return database.executar(instrucaoSql);
 }
 
+function contarPostagens(idUsuario) {
+    console.log("Contando as postagens do usuário com ID:", idUsuario);
+    var instrucaoSql = `
+        SELECT COUNT(idPostagem) AS totalPostagens FROM Postagem WHERE fkUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function obterPersonagemFavorito(idUsuario) {
+    console.log("Consultando o personagem favorito do usuário com ID:", idUsuario);
+    var instrucaoSql = `
+        SELECT p.nome FROM Personagem AS p JOIN Usuario AS u ON u.fkPersoFav = p.idPerso WHERE u.idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function obterArcoFavorito(idUsuario) {
+    console.log("Consultando o arco favorito do usuário com ID:", idUsuario);
+    var instrucaoSql = `
+        SELECT a.nome FROM Arco AS a JOIN Usuario AS u ON u.fkArcoFav = a.idArco WHERE u.idUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     publicar,
-    mostrar
+    mostrar,
+    contarPostagens,
+    obterPersonagemFavorito,
+    obterArcoFavorito
 }

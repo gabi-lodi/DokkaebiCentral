@@ -21,6 +21,9 @@ function buscarHistoricoUsuario(req, res){
     });
 }
 
+
+
+
 module.exports = {
     buscarHistoricoUsuario
 }

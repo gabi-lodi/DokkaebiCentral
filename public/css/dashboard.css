@@ -262,6 +262,7 @@ button:hover{
 
 .KPIContent{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 50vh;
@@ -297,6 +298,51 @@ button:hover{
 .legendaKPI{
     font-size: 20px;
 }
+
+.KPI{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.iptRedefinirFavs select{
+    display: flex;
+    flex-direction: row;
+    appearance: none;
+    position: relative;
+    font-size: 16px;
+    font-family: KeplerNormal;
+    margin: 10px;
+    background-color: #E0E0E0;
+    box-shadow: none;
+    border: none;
+    border-radius: 10px;
+    height: 57px;
+    width: 185px;
+    padding: 10px;
+    text-align: start;
+    appearance: none;
+    /* arrow */
+
+    /* link da imagem */
+    background-image: url("https://www.worldskillseurope.org/concrete/images/icons/select_arrow_down.svg");
+
+    /* para não espelhar */
+    background-repeat: no-repeat; 
+    
+    /* posição dela no select */
+    background-position: right 10px top 50%;
+
+    /* tamanho dela */
+    background-size: 10px auto;
+}
+
+.iptRedefinirFavs{
+    display: flex;
+}
+
+
 
 
 

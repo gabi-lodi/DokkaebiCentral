@@ -13,4 +13,16 @@ router.get("/mostrar", function (req, res) {
     feedController.mostrar(req, res);
 });
 
+router.get("/contarPostagens/:idUsuario", function(req, res) {
+    feedController.contarPostagens(req, res);
+});
+
+router.get("/personagemFavorito/:idUsuario", function(req, res) {
+    feedController.obterPersonagemFavorito(req, res);
+});
+
+router.get("/arcoFavorito/:idUsuario", function(req, res) {
+    feedController.obterArcoFavorito(req, res);
+});
+
 module.exports = router;

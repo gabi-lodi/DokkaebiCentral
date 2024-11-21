@@ -44,11 +44,76 @@ function mostrar(req, res) {
         });
 }
 
+function contarPostagens(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("O ID do usuário está indefinido!");
+    } else {
+        feedModel.contarPostagens(idUsuario)
+            .then(function(resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado[0]);
+                } else {
+                    res.status(404).send("Nenhuma postagem encontrada para este usuário.");
+                }
+            })
+            .catch(function(erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+function obterPersonagemFavorito(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("O ID do usuário está indefinido!");
+    } else {
+        feedModel.obterPersonagemFavorito(idUsuario)
+            .then(function(resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado[0]);
+                } else {
+                    res.status(404).send("Nenhum personagem favorito encontrado para este usuário.");
+                }
+            })
+            .catch(function(erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+function obterArcoFavorito(req, res) {
+    var idUsuario = req.params.idUsuario;
+
+    if (idUsuario == undefined) {
+        res.status(400).send("O ID do usuário está indefinido!");
+    } else {
+        feedModel.obterArcoFavorito(idUsuario)
+            .then(function(resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado[0]);
+                } else {
+                    res.status(404).send("Nenhum arco favorito encontrado para este usuário.");
+                }
+            })
+            .catch(function(erro) {
+                console.log(erro);
+                res.status(500).json(erro.sqlMessage);
+            });
+    }
+}
+
+
+
 
 module.exports = {
-    // pesquisarDescricao,
     publicar,
-    // editar,
-    // deletar
-    mostrar
+    mostrar,
+    contarPostagens,
+    obterPersonagemFavorito,
+    obterArcoFavorito
 }

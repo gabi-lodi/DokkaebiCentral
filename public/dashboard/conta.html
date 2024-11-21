@@ -63,19 +63,56 @@
         </div>
       </div>
 
-      <div class="KPIBox">
-        <div class="KPIContent">
-          <div class="legendaKPI">
-            postagens:
+      <div class="KPI">
+        <div class="KPIBox">
+          <div class="KPIContent">
+            <div class="legendaKPI">
+              postagens:
+            </div>
+            <div id="qtdPostagens">00</div>
+            <div class="legendaKPI">
+              Personagem Favorito:
+            </div>
+            <div id="persoFav">xpto</div>
+            <div class="legendaKPI">
+              Arco Favorito:
+            </div>
+            <div id="arcoFav">xpto</div>
           </div>
-          <div id="qtdPostagens">00</div>
-          <div>|</div>
-          <div class="legendaKPI">
-            nao sei:
-          </div>
-          <div id="pctLeitura">00</div>
         </div>
+        <div class="iptRedefinirFavs">
+          <select name="PF" id="selectPF">
+            <option value="#">Personagem Favorito</option>
+            <option value="1">Kim Dokja</option>
+            <option value="2">Yoo Joonghyuk</option>
+            <option value="3">Han Sooyoung</option>
+            <option value="4">Lee Hyunsung</option>
+            <option value="5">Jung Heewon</option>
+            <option value="6">Lee Jihye</option>
+            <option value="7">Yoo Sangah</option>
+            <option value="8">Shin Yooshung</option>
+            <option value="9">Lee Gilyoung</option>
+            <option value="10">Não Definido</option>
+          </select>
+          <div id="divSelectPF"></div>
+          <select name="AF" id="selectAF">
+            <option value="#">Arco Favorito</option>
+            <option value="1">Chegada dos Novatos</option>
+            <option value="2">Domínio da Guerra</option>
+            <option value="3">Grande Guerra de Estrelas</option>
+            <option value="4">Guerra Civil de Seul</option>
+            <option value="5">Candidatos à Transcendência</option>
+            <option value="6">Novo Mundo</option>
+            <option value="7">Cenário Final</option>
+            <option value="8">Epilogo</option>
+            <option value="9">Não Definido</option>
+          </select>
+          <div id="divSelectAF"></div>
+          <br>
+        </div>
+        <button onclick="redefinir()">Redefinir favoritos</button>
       </div>
+
 
 </body>
 
@@ -84,6 +121,49 @@
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  window.onload = function () {
+    contarPostagens();
+    obterPersonagemFavorito();
+    obterArcoFavorito(); // Chama a função para contar as postagens assim que a página carregar
+  }
+
+  function redefinir() {
+    var persoFavVar = selectPF.value;
+    var arcoFavVar = selectAF.value;
+
+    fetch("/usuarios/redefinir", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        persoFavServer: persoFavVar,
+        arcoFavServer: arcoFavVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          alert('Cadastro realizado com sucesso!')
+          window.location = "login.html";
+
+          limparFormulario();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+    return false;
+  }
+
 
 
   function progresso() {
@@ -226,4 +306,70 @@
     });
 
   }
+
+  function contarPostagens() {
+    var idUsuario = sessionStorage.ID_USUARIO; // Recupere o ID do usuário do sessionStorage
+
+    fetch(`/feed/contarPostagens/${idUsuario}`)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Erro ao contar postagens.");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        //quantidade de postagens
+        console.log("Número de postagens: ", data.totalPostagens);
+        // Exibir o número de postagens na tela
+        document.getElementById('qtdPostagens').innerHTML = `${data.totalPostagens}`;
+      })
+      .catch(function (error) {
+        console.error("Erro ao obter o número de postagens:", error);
+      });
+  }
+
+  function obterPersonagemFavorito() {
+    var idUsuario = sessionStorage.ID_USUARIO; // Recupere o ID do usuário do sessionStorage
+
+    fetch(`/feed/personagemFavorito/${idUsuario}`)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Erro ao obter personagem favorito.");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        // Aqui você pode manipular a resposta, que contém o nome do personagem
+        console.log("Personagem favorito: ", data.nome);
+        // Exibir o nome do personagem favorito na tela, por exemplo:
+        document.getElementById('persoFav').innerText = `${data.nome}`;
+      })
+      .catch(function (error) {
+        console.error("Erro ao obter o personagem favorito:", error);
+      });
+  }
+
+  function obterArcoFavorito() {
+    var idUsuario = sessionStorage.ID_USUARIO; // Recupere o ID do usuário do sessionStorage
+
+    fetch(`/feed/arcoFavorito/${idUsuario}`)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Erro ao obter arco favorito.");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        // Aqui você pode manipular a resposta, que contém o nome do arco
+        console.log("Arco favorito: ", data.nome);
+        // Exibir o nome do arco favorito na tela, por exemplo:
+        document.getElementById('arcoFav').innerText = `${data.nome}`;
+      })
+      .catch(function (error) {
+        console.error("Erro ao obter o arco favorito:", error);
+      });
+  }
+
+
+
 </script>
