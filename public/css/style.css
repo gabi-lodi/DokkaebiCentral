@@ -40,7 +40,7 @@ body a{
     text-decoration: none;
 }
 
-p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg{
+p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg, .postagem{
     /* aqui temos a animação do scroll, no qual o primeiro valor seria no nome declarado no @keyframe, o segundo seria a duração, o terceiro a direção (frente, trás ou ambos), e por mais que tenha mais opções, não é necessario colocar. */
     animation: fade ease both; 
     animation-timeline: view();  
@@ -583,4 +583,143 @@ svg{
     text-align: center;
     font-size: 20px;
     margin: 35px;
+}
+
+.infoBox1{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.infoBox2{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.infoTextBox{
+    display: flex;
+    flex-direction: column;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+}
+
+.infoImg{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/KDJ.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg2{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/YJH.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg3{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/HSY.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg4{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/LHS.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg5{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/JHW.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg6{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/YSG.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg7{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/LJH.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg8{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/SYS.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.infoImg9{
+    display: flex;
+    width: 100vh;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../imagens/IMG-persos/LGY.jpg);
+    background-position-x: center;
+    background-size: 700px;
+}
+
+.postagem{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    width: 80vh;
+    border-radius: 20px;
+    border-color: #3C3C3C;
+    border: solid;
+}
+
+.postsHome{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

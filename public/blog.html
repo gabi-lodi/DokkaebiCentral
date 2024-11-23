@@ -44,66 +44,63 @@
 
     <div class="colorLine"></div>
 
-    <div>
-        <h2>Mais recentes</h2>
+    <div class="postsHome">
+        <div>
+            <h2>Mais recentes</h2>
+        </div>
+    
+        <div class="postsContainer">
+            <div id="feed_container" class="feed-container">
+            </div>
+        </div>
     </div>
+
 
 </body>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 <script>
 
-atualizarGrafico()
-function atualizarGrafico() {
-  var usuarioVar = sessionStorage.NOME_USUARIO;
-  var emailVar = sessionStorage.EMAIL_USUARIO;
+document.addEventListener('DOMContentLoaded', carregarFeed);
 
-  fetch("/favs/obterFavs", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      usuarioServer: usuarioVar,
-      emailServer: emailVar
-    })
-  }).then(function (resposta) {
-    resposta.json().then(valor => {
-      console.log(valor[0].capitulo);
-
-    const ctx2 = document.getElementById('myChart2').getContext('2d');
-    const myChart2 = new Chart(ctx2, {
-    type: 'bar',
-    data: {
-        labels: ['1-26', '27-50', '51-100', '101-190', '191-260', '261-348', '349-452', '453-551', 'N/D'],
-        datasets: [{
-            label: 'Arcos Mais Populares',
-            data: [12, 19, 3, 5, 2, 3, 1, 1, 1],
-            backgroundColor: [
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)',
-                'rgba(1, 1, 1, 1)'
-            ],
-            
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-
-    });
-  }).catch(function (erro) {
-    console.log(erro);
-  });
+function carregarFeed() {
+    fetch('/feed/mostrar')
+        .then((response) => {
+            if (!response.ok) throw new Error("Erro ao carregar posts!");
+            return response.json();
+        })
+        .then((posts) => {
+            exibirPosts(posts);
+        })
+        .catch((error) => {
+            console.error("Erro ao carregar o feed: ", error);
+        });
 }
+
+function exibirPosts(posts) {
+    const feedContainer = document.getElementById('feed_container');
+    feedContainer.innerHTML = ''; // Limpa o container
+
+    if (posts.length === 0) {
+        feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
+        return;
+    }
+
+    posts.forEach((post) => {
+        const postElement = document.createElement('div');
+        postElement.className = 'post';
+
+        feedContainer.innerHTML += `
+        <div class="postagem">
+            <span style="text-decoration: underline;">${post.nome}</span>
+            <h3><b>${post.titulo}</b></h3>
+            <p>${post.descricao}</p>
+            <br>
+        </div>
+        `;
+
+        feedContainer.appendChild(postElement);
+    });
+}
+
 
 </script>

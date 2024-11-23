@@ -96,6 +96,10 @@ SELECT COUNT(idUsuario) FROM Usuario GROUP BY fkPersoFav;
 
 SELECT COUNT(idPostagem) FROM Postagem WHERE fkUsuario = 1;
 
+SELECT p.nome FROM Personagem as p JOIN Usuario as u ON u.fkPersoFav = p.idPerso WHERE u.idUsuario = 1;
+SELECT a.nome FROM Arco as a JOIN Usuario as u ON u.fkPersoFav = a.idArco WHERE u.idUsuario = 1;
+
+UPDATE Usuario SET fkPersoFav = 1 WHERE idUsuario = 1;
 
 SELECT PL.capitulo FROM ProgressoLeitura as PL JOIN Usuario as U ON PL.fkUsuario = U.idUsuario  WHERE nome = '' AND email = ''AND senha = '';
 

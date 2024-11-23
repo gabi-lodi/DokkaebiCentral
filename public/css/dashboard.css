@@ -86,32 +86,6 @@ body a{
     flex-direction: row;
 }
 
-.checkbox{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    width: 30vh;
-    height: 20vh;
-    border-color: black;
-    border-style: solid;
-    border-radius: 20px;
-    text-align: center;
-    font-size: 16px;
-}
-
-.checkboxBox{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.checkboxDiv{
-   margin: 20px;
-}
-
 .grafico{
     width: 50vh;
     border: 2px;
@@ -304,6 +278,7 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .iptRedefinirFavs select{
@@ -340,6 +315,10 @@ button:hover{
 
 .iptRedefinirFavs{
     display: flex;
+}
+
+.introHome{
+    background-color: white;
 }
 
 
