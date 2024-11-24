@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
 
     <script src="./js/sessao.js"></script>
 </head>
+
 <body>
 
     <div class="navbar">
@@ -25,7 +27,7 @@
                 <img src="./imagens/star.png" alt="" style="height: 20px;">
             </div>
         </div>
-        
+
         <div class="navbarRight">
             <a href="./login.html">Login</a>
             |
@@ -48,7 +50,7 @@
         <div>
             <h2>Mais recentes</h2>
         </div>
-    
+
         <div class="postsContainer">
             <div id="feed_container" class="feed-container">
             </div>
@@ -60,36 +62,139 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 <script>
 
-document.addEventListener('DOMContentLoaded', carregarFeed);
+    window.onload = function () {
+        atualizarGraficoPersonagens();
+    };
 
-function carregarFeed() {
-    fetch('/feed/mostrar')
-        .then((response) => {
-            if (!response.ok) throw new Error("Erro ao carregar posts!");
-            return response.json();
-        })
-        .then((posts) => {
-            exibirPosts(posts);
-        })
-        .catch((error) => {
-            console.error("Erro ao carregar o feed: ", error);
-        });
-}
+    document.addEventListener('DOMContentLoaded', carregarFeed);
 
-function exibirPosts(posts) {
-    const feedContainer = document.getElementById('feed_container');
-    feedContainer.innerHTML = ''; // Limpa o container
+    const ctx = document.getElementById('myChart');
 
-    if (posts.length === 0) {
-        feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
-        return;
+    let grafico1 = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Personagens mais Populares',
+                data: [],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function atualizarGraficoPersonagens() {
+        fetch('/favs/favs/popularPersonagens') 
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Erro');
+                }
+                return response.json();
+            })
+            .then((dados) => {
+                console.log(dados)
+                var arrayPersos = [];
+                var dadosVar = [];
+                for (let i = 0; i < dados.length; i++) {
+                    arrayPersos.push(dados[i].nome)
+                    dadosVar.push(dados[i].quantidade)        
+                }
+                console.log(dadosVar);
+                grafico1.data.labels = arrayPersos;
+                grafico1.data.datasets[0].data = dadosVar;
+
+                grafico1.update();  
+            })
+            .catch((erro) => {
+                console.error('Erro ao atualizar o gráfico', erro);
+            });
     }
 
-    posts.forEach((post) => {
-        const postElement = document.createElement('div');
-        postElement.className = 'post';
+    // ---------------------------------------------------------------------------------------------------------------------------
 
-        feedContainer.innerHTML += `
+    const ctx2 = document.getElementById('myChart2');
+
+    let grafico2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: [],
+            datasets: [{
+                label: 'Personagens mais Populares',
+                data: [],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    function atualizarGraficoArcos() {
+        fetch('/favs/favs/popularArcos') 
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Erro');
+                }
+                return response.json();
+            })
+            .then((dados) => {
+                console.log(dados)
+                var arrayArcos = [];
+                var dadosVar = [];
+                for (let i = 0; i < dados.length; i++) {
+                    arrayPersos.push(dados[i].nome)
+                    dadosVar.push(dados[i].quantidade)        
+                }
+                console.log(dadosVar);
+                grafico2.data.labels = arrayPersos;
+                grafico2.data.datasets[0].data = dadosVar;
+
+                grafico1.update();  
+            })
+            .catch((erro) => {
+                console.error('Erro ao atualizar o gráfico', erro);
+            });
+    }
+
+
+    function carregarFeed() {
+        fetch('/feed/mostrar')
+            .then((response) => {
+                if (!response.ok) throw new Error("Erro ao carregar posts!");
+                return response.json();
+            })
+            .then((posts) => {
+                exibirPosts(posts);
+            })
+            .catch((error) => {
+                console.error("Erro ao carregar o feed: ", error);
+            });
+    }
+
+    function exibirPosts(posts) {
+        const feedContainer = document.getElementById('feed_container');
+        feedContainer.innerHTML = ''; // Limpa o container
+
+        if (posts.length === 0) {
+            feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
+            return;
+        }
+
+        posts.forEach((post) => {
+            const postElement = document.createElement('div');
+            postElement.className = 'post';
+
+            feedContainer.innerHTML += `
         <div class="postagem">
             <span style="text-decoration: underline;">${post.nome}</span>
             <h3><b>${post.titulo}</b></h3>
@@ -98,9 +203,9 @@ function exibirPosts(posts) {
         </div>
         `;
 
-        feedContainer.appendChild(postElement);
-    });
-}
+            feedContainer.appendChild(postElement);
+        });
+    }
 
 
 </script>

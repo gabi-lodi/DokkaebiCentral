@@ -7,4 +7,12 @@ router.post("/favs/obterFavs/:idUsuario", function (req, res) {
     feedController.publicar(req, res);
 });
 
+router.get("/favs/popularPersonagens", function (req, res) {
+    favsController.popularPersonagens(req, res);
+});
+
+router.get("/favs/popularArcos", function (req, res) {
+    favsController.popularPersonagens(req, res);
+});
+
 module.exports = router;

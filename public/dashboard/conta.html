@@ -341,7 +341,7 @@
       .then(function (data) {
         // Aqui você pode manipular a resposta, que contém o nome do personagem
         console.log("Personagem favorito: ", data.nome);
-        // Exibir o nome do personagem favorito na tela, por exemplo:
+        // Exibir o nome do personagem favorito na tela
         document.getElementById('persoFav').innerText = `${data.nome}`;
       })
       .catch(function (error) {
@@ -360,9 +360,7 @@
         return response.json();
       })
       .then(function (data) {
-        // Aqui você pode manipular a resposta, que contém o nome do arco
         console.log("Arco favorito: ", data.nome);
-        // Exibir o nome do arco favorito na tela, por exemplo:
         document.getElementById('arcoFav').innerText = `${data.nome}`;
       })
       .catch(function (error) {
