@@ -90,7 +90,7 @@
     });
 
     function atualizarGraficoPersonagens() {
-        fetch('/favs/favs/popularPersonagens') 
+        fetch('/favs/favs/popularPersonagens')
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Erro');
@@ -103,13 +103,13 @@
                 var dadosVar = [];
                 for (let i = 0; i < dados.length; i++) {
                     arrayPersos.push(dados[i].nome)
-                    dadosVar.push(dados[i].quantidade)        
+                    dadosVar.push(dados[i].quantidade)
                 }
                 console.log(dadosVar);
                 grafico1.data.labels = arrayPersos;
                 grafico1.data.datasets[0].data = dadosVar;
 
-                grafico1.update();  
+                grafico1.update();
             })
             .catch((erro) => {
                 console.error('Erro ao atualizar o gráfico', erro);
@@ -125,7 +125,7 @@
         data: {
             labels: [],
             datasets: [{
-                label: 'Personagens mais Populares',
+                label: 'Arcos mais Populares',
                 data: [],
                 borderWidth: 1
             }]
@@ -140,7 +140,7 @@
     });
 
     function atualizarGraficoArcos() {
-        fetch('/favs/favs/popularArcos') 
+        fetch('/favs/popularArcos') // Corrigido o endpoint
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Erro');
@@ -148,23 +148,26 @@
                 return response.json();
             })
             .then((dados) => {
-                console.log(dados)
+                console.log(dados);
                 var arrayArcos = [];
-                var dadosVar = [];
+                var dadosVar2 = [];
                 for (let i = 0; i < dados.length; i++) {
-                    arrayPersos.push(dados[i].nome)
-                    dadosVar.push(dados[i].quantidade)        
+                    arrayArcos.push(dados[i].nome); // Corrigido para usar arrayArcos
+                    dadosVar2.push(dados[i].quantidade);
                 }
-                console.log(dadosVar);
-                grafico2.data.labels = arrayPersos;
-                grafico2.data.datasets[0].data = dadosVar;
+                console.log(dadosVar2);
 
-                grafico1.update();  
+                // Atualizando os dados do gráfico
+                grafico2.data.labels = arrayArcos;
+                grafico2.data.datasets[0].data = dadosVar2;
+
+                grafico2.update(); // Corrigido para atualizar o grafico2
             })
             .catch((erro) => {
                 console.error('Erro ao atualizar o gráfico', erro);
             });
     }
+
 
 
     function carregarFeed() {

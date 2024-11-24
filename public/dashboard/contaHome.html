@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokkaebi Central</title>
     <link rel="stylesheet" href="./../css/dashboard.css">
     <link rel="imgsheet" href="./../imagens">
-
-    
 </head>
-<body onload="carregarFeed()" style="background-color: #161618;"></body>
+
+<body onload="carregarFeed()"></body>
+
 <body>
 
     <div class="navbar">
@@ -27,7 +28,7 @@
             </div>
             <a href="./starSystem.html">Sobre ORV</a>
         </div>
-        
+
         <div class="navbarRight">
             <div style="display: flex; align-items: center;">
                 <a href="./conta.html">Conta</a>
@@ -45,16 +46,19 @@
 
     <div class="banner">
         <div class="container">
-                <div class="hello">
-                    <h3>Bem vindo(a), <span id="b_usuario">usuário</span>!</h3>
-                </div>
+            <div class="hello">
+                <h3>Bem vindo(a), <span id="b_usuario">usuário</span>!</h3>
+            </div>
         </div>
     </div>
 
-    <div class="introHome">
-        <div>
-            <h2>Feed de Post</h2>
-        </div>
+
+    </div>
+
+    <div class="feedNav">
+        <a href="./contaBlog.html">← Postar</a>
+        <h2>Postagens</h2>
+        <a href="./starsystem.html">Sobre ORV →</a>
     </div>
 
 
@@ -63,58 +67,59 @@
         </div>
     </div>
 
-</div>
 </body>
+
 </html>
 
 <script>
-        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 </script>
 
 <script>
 
-function carregarFeed() {
-    fetch('/feed/mostrar')
-        .then((response) => {
-            if (!response.ok) throw new Error("Erro ao carregar posts!");
-            return response.json();
-        })
-        .then((posts) => {
-            exibirPosts(posts);
-        })
-        .catch((error) => {
-            console.error("Erro ao carregar o feed: ", error);
-        });
-}
-
-function exibirPosts(posts) {
-    const feedContainer = document.getElementById('feed_container');
-    feedContainer.innerHTML = ''; // Limpa o container
-
-    if (posts.length === 0) {
-        feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
-        return;
+    function carregarFeed() {
+        fetch('/feed/mostrar')
+            .then((response) => {
+                if (!response.ok) throw new Error("Erro ao carregar posts!");
+                return response.json();
+            })
+            .then((posts) => {
+                exibirPosts(posts);
+            })
+            .catch((error) => {
+                console.error("Erro ao carregar o feed: ", error);
+            });
     }
 
-    posts.forEach((post) => {
-        const postElement = document.createElement('div');
-        postElement.className = 'post';
+    function exibirPosts(posts) {
+        const feedContainer = document.getElementById('feed_container');
+        feedContainer.innerHTML = ''; // Limpa o container
 
-        feedContainer.innerHTML += `
+        if (posts.length === 0) {
+            feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
+            return;
+        }
+
+        posts.forEach((post) => {
+            const postElement = document.createElement('div');
+            postElement.className = 'post';
+
+            feedContainer.innerHTML += `
         <div class="postagem">
             <h3>${post.titulo}</h3>
             <p>${post.descricao}</p>
             <span>Postado por: ${post.nome}</span>
             <br>
-            <div>
-                <button>comentar</button> <input style="width: 465px;">
-            </div>
         </div>
         `;
 
-        feedContainer.appendChild(postElement);
-    });
-}
+            // <div>
+            //         <button>comentar</button> <input style="width: 465px;">
+            //     </div>
+
+            feedContainer.appendChild(postElement);
+        });
+    }
 
 
 </script>

@@ -321,6 +321,21 @@ button:hover{
     background-color: white;
 }
 
+.feedNav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.feedNav a{
+    background-color: #333;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
 
 
 

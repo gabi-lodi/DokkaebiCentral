@@ -90,6 +90,8 @@ select * from Arco;
 select * from Postagem;
 select * from ProgressoLeitura;
 
+SELECT p.nome, COUNT(u.idUsuario) AS quantidade FROM Usuario AS u RIGHT JOIN Arco AS p ON u.fkArcoFav = p.idArco GROUP BY p.nome ORDER BY quantidade DESC;
+
 SELECT p.idPostagem, p.titulo, p.descricao, u.nome FROM Postagem as p JOIN Usuario as u ON p.fkUsuario = u.idUsuario ORDER BY idPostagem desc;
 
 SELECT COUNT(idUsuario) FROM Usuario GROUP BY fkPersoFav;

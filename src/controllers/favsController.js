@@ -43,7 +43,7 @@ function popularArcos(req, res) {
     favsModel.obterPopularidadeArcos()
         .then((resultado) => {
             if (resultado.length > 0) {
-                res.status(200).json(resultado);  // Retorna os dados em JSON
+                res.status(200).json(resultado); // Retorna os dados em JSON
             } else {
                 res.status(204).send("Nenhum dado encontrado.");
             }

@@ -12,7 +12,8 @@ router.get("/favs/popularPersonagens", function (req, res) {
 });
 
 router.get("/favs/popularArcos", function (req, res) {
-    favsController.popularPersonagens(req, res);
+    favsController.popularArcos(req, res);
 });
+
 
 module.exports = router;
