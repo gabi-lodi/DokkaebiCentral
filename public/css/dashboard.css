@@ -367,6 +367,15 @@ button:hover{
     margin: auto;
 }
 
+.chartsFeed{
+    display: flex;
+}
+
+.textBox{
+    display: flex;
+    justify-content: center;
+}
+
 
 
 

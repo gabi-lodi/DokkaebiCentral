@@ -269,29 +269,17 @@ p, h3, img, .box1, .imageBox, .bannerContainer, .banner2, .boxSobreImg, .postage
     font-size: 20px;
 }
 
-.galeria .galeriaBox img{
-    border-radius: 20px;
-}
 
 .galeria:hover .galeriaBox{
-
+    
     /* quando o mouse estiver em cima da div galeria, os elementos do galeriaBox terão a rotação resetada para 0, e a margem horizontal modificada para 20px */
     transform: rotate(0deg);
     margin: 0 20px;
 }
 
-.galeria .galeriaBox::before{
-    /* o attr recupera o valor de um atributo HTML, então nesse caso, ele ta pegando o data-text inserido na div da galeriaBox*/
-    content: attr(data-text);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.galeria .galeriaBox img{
+    border-radius: 20px;
 }
-
 .intro {
     display: flex;
     flex-direction: column;
@@ -633,7 +621,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/KDJ.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg2{
@@ -644,7 +632,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/YJH.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg3{
@@ -655,7 +643,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/HSY.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg4{
@@ -666,7 +654,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/LHS.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg5{
@@ -677,7 +665,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/JHW.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg6{
@@ -688,7 +676,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/YSG.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg7{
@@ -699,7 +687,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/LJH.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg8{
@@ -710,7 +698,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/SYS.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .infoImg9{
@@ -721,7 +709,7 @@ svg{
     align-items: center;
     background-image: url(../imagens/IMG-persos/LGY.jpg);
     background-position-x: center;
-    background-size: 700px;
+    background-size: 820px;
 }
 
 .postagem{

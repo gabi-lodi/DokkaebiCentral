@@ -90,6 +90,11 @@ select * from Arco;
 select * from Postagem;
 select * from ProgressoLeitura;
 
+UPDATE Usuario SET fkPersoFav = ${persoFav} AND fkArcoFav = ${arcoFav} WHERE idUsuario = ${idUsuario}
+
+
+SELECT p.nome FROM Personagem AS p JOIN Usuario AS u ON u.fkPersoFav = p.idPerso;
+
 SELECT p.nome, COUNT(u.idUsuario) AS quantidade FROM Usuario AS u RIGHT JOIN Arco AS p ON u.fkArcoFav = p.idArco GROUP BY p.nome ORDER BY quantidade DESC;
 
 SELECT p.idPostagem, p.titulo, p.descricao, u.nome FROM Postagem as p JOIN Usuario as u ON p.fkUsuario = u.idUsuario ORDER BY idPostagem desc;

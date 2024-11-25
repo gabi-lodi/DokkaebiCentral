@@ -44,6 +44,25 @@ function mostrar(req, res) {
         });
 }
 
+function mostrarPostsUsuario(req, res) {
+    const idUsuario = req.params.idUsuario;
+    console.log("ID do usuário:", idUsuario);
+
+    feedModel.mostrarPostsUsuario(idUsuario)
+        .then((resultado) => {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum post encontrado.");
+            }
+        })
+        .catch((erro) => {
+            console.error("Erro ao buscar posts: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+
 function contarPostagens(req, res) {
     var idUsuario = req.params.idUsuario;
 
@@ -115,5 +134,6 @@ module.exports = {
     mostrar,
     contarPostagens,
     obterPersonagemFavorito,
-    obterArcoFavorito
+    obterArcoFavorito,
+    mostrarPostsUsuario
 }

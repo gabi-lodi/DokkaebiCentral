@@ -9,7 +9,6 @@
   <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
   <div class="navbar">
 
@@ -22,6 +21,7 @@
       <a href="./contaBlog.html">Postar</a>
       <a href="./contaHome.html">Home</a>
       <a href="./starSystem.html">Sobre ORV</a>
+      <a href="./estatisticasConta.html">Estatísticas</a>
     </div>
 
     <div class="navbarRight">
@@ -39,81 +39,92 @@
 
   </div>
 
-  <div class="banner">
-    <div class="container">
-      <div class="hello">
-        <h3>Progresso de leitura de <span id="b_usuario">usuário</span></h3>
+  <div>
+    <div class="banner">
+      <div class="container">
+        <div class="hello">
+          <h3>Progresso de leitura de <span id="b_usuario">usuário</span></h3>
+        </div>
+        <img src="./imagens/DC-whitelogo.png" alt="" style="height: 90px;">
       </div>
-      <img src="./imagens/DC-whitelogo.png" alt="" style="height: 90px;">
     </div>
-  </div>
-  <div class="box1">
+    <div class="box1">
 
-    <div class="contaBox">
+      <div class="contaBox">
 
-      <div class="graficoIPT">
-        <h2>Progresso de Leitura</h2>
-        <div class="grafico">
-          <div id="divMensagem">
+        <div class="graficoIPT">
+          <h2>Progresso de Leitura</h2>
+          <div class="grafico">
+            <div id="divMensagem">
+            </div>
+            <canvas id="myChart"></canvas>
           </div>
-          <canvas id="myChart"></canvas>
+          <div>
+            <input type="number" id="iptCapitulo" placeholder="Capítulo atual">
+            <button onclick="progresso()">Ver Progresso</button>
+          </div>
         </div>
-        <div>
-          <input type="number" id="iptCapitulo" placeholder="Capítulo atual">
-          <button onclick="progresso()">Ver Progresso</button>
+
+        <div class="KPI">
+          <div class="KPIBox">
+            <div class="KPIContent">
+              <div class="legendaKPI">
+                postagens:
+              </div>
+              <div id="qtdPostagens">00</div>
+              <div class="legendaKPI">
+                Personagem Favorito:
+              </div>
+              <div id="persoFav">xpto</div>
+              <div class="legendaKPI">
+                Arco Favorito:
+              </div>
+              <div id="arcoFav">xpto</div>
+            </div>
+          </div>
+          <div class="iptRedefinirFavs">
+            <select name="PF" id="selectPF">
+              <option value="#">Personagem Favorito</option>
+              <option value="1">Kim Dokja</option>
+              <option value="2">Yoo Joonghyuk</option>
+              <option value="3">Han Sooyoung</option>
+              <option value="4">Lee Hyunsung</option>
+              <option value="5">Jung Heewon</option>
+              <option value="6">Lee Jihye</option>
+              <option value="7">Yoo Sangah</option>
+              <option value="8">Shin Yooshung</option>
+              <option value="9">Lee Gilyoung</option>
+              <option value="10">Não Definido</option>
+            </select>
+            <div id="divSelectPF"></div>
+            <select name="AF" id="selectAF">
+              <option value="#">Arco Favorito</option>
+              <option value="1">Chegada dos Novatos</option>
+              <option value="2">Domínio da Guerra</option>
+              <option value="3">Grande Guerra de Estrelas</option>
+              <option value="4">Guerra Civil de Seul</option>
+              <option value="5">Candidatos à Transcendência</option>
+              <option value="6">Novo Mundo</option>
+              <option value="7">Cenário Final</option>
+              <option value="8">Epilogo</option>
+              <option value="9">Não Definido</option>
+            </select>
+            <div id="divSelectAF"></div>
+            <br>
+          </div>
+          <button onclick="redefinir()">Redefinir favoritos</button>
+          <div id="divErro"></div>
         </div>
       </div>
 
-      <div class="KPI">
-        <div class="KPIBox">
-          <div class="KPIContent">
-            <div class="legendaKPI">
-              postagens:
-            </div>
-            <div id="qtdPostagens">00</div>
-            <div class="legendaKPI">
-              Personagem Favorito:
-            </div>
-            <div id="persoFav">xpto</div>
-            <div class="legendaKPI">
-              Arco Favorito:
-            </div>
-            <div id="arcoFav">xpto</div>
+      <div>
+        <h2 style="display: flex; justify-content: center; ">Suas Postagens</h2>
+        <div class="postsContainer">
+          <div id="feed_container" class="feed-container">
           </div>
-        </div>
-        <div class="iptRedefinirFavs">
-          <select name="PF" id="selectPF">
-            <option value="#">Personagem Favorito</option>
-            <option value="1">Kim Dokja</option>
-            <option value="2">Yoo Joonghyuk</option>
-            <option value="3">Han Sooyoung</option>
-            <option value="4">Lee Hyunsung</option>
-            <option value="5">Jung Heewon</option>
-            <option value="6">Lee Jihye</option>
-            <option value="7">Yoo Sangah</option>
-            <option value="8">Shin Yooshung</option>
-            <option value="9">Lee Gilyoung</option>
-            <option value="10">Não Definido</option>
-          </select>
-          <div id="divSelectPF"></div>
-          <select name="AF" id="selectAF">
-            <option value="#">Arco Favorito</option>
-            <option value="1">Chegada dos Novatos</option>
-            <option value="2">Domínio da Guerra</option>
-            <option value="3">Grande Guerra de Estrelas</option>
-            <option value="4">Guerra Civil de Seul</option>
-            <option value="5">Candidatos à Transcendência</option>
-            <option value="6">Novo Mundo</option>
-            <option value="7">Cenário Final</option>
-            <option value="8">Epilogo</option>
-            <option value="9">Não Definido</option>
-          </select>
-          <div id="divSelectAF"></div>
-          <br>
-        </div>
-        <button onclick="redefinir()">Redefinir favoritos</button>
-        <div id="divErro"></div>
       </div>
+      </div>
+
 
 </body>
 
@@ -126,8 +137,11 @@
   window.onload = function () {
     contarPostagens();
     obterPersonagemFavorito();
-    obterArcoFavorito(); // Chama a função para contar as postagens assim que a página carregar
+    obterArcoFavorito(); 
+    carregarFeed();// Chama a função para contar as postagens assim que a página carregar
   }
+
+
 
   function redefinir() {
     var idUsuario = sessionStorage.ID_USUARIO;
@@ -187,6 +201,11 @@
       var porcentagemLeitura = (capitulo / 551) * 100
 
       divMensagem.innerHTML = `Você leu ${porcentagemLeitura.toFixed(2)}% do livro!`
+      
+      var corpo = {
+        capitulo: Number(iptCapitulo.value),
+        idUsuario: sessionStorage.ID_USUARIO
+      }
 
       fetch(`/progresso/progresso/${idUsuario}/${capitulo}`, {
         method: "post",
@@ -210,11 +229,6 @@
       });
 
 
-
-      var corpo = {
-        capitulo: Number(iptCapitulo.value),
-        idUsuario: sessionStorage.ID_USUARIO
-      }
 
       atualizarNovoProgresso()
 
@@ -375,6 +389,45 @@
       });
   }
 
+  function carregarFeed() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+    fetch(`/feed/mostrarPostsUsuario/${idUsuario}`)
+      .then((response) => {
+        if (!response.ok) throw new Error("Erro ao carregar posts!");
+        return response.json();
+      })
+      .then((posts) => {
+        exibirPosts(posts);
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar o feed: ", error);
+      });
+  }
 
+  function exibirPosts(posts) {
+    const feedContainer = document.getElementById('feed_container');
+    feedContainer.innerHTML = ''; // Limpa o container
+
+    if (posts.length === 0) {
+      feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
+      return;
+    }
+
+    posts.forEach((post) => {
+      const postElement = document.createElement('div');
+      postElement.className = 'post';
+
+      feedContainer.innerHTML += `
+        <div class="postagem">
+            <h3>${post.titulo}</h3>
+            <p>${post.descricao}</p>
+            <span>Postado por: ${post.nome}</span>
+            <br>
+        </div>
+        `;
+
+      feedContainer.appendChild(postElement);
+    });
+  }
 
 </script>

@@ -25,4 +25,8 @@ router.get("/arcoFavorito/:idUsuario", function(req, res) {
     feedController.obterArcoFavorito(req, res);
 });
 
+router.get("/mostrarPostsUsuario/:idUsuario", function(req, res) {
+    feedController.mostrarPostsUsuario(req, res);
+});
+
 module.exports = router;

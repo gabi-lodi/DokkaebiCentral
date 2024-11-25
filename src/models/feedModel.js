@@ -43,10 +43,20 @@ function obterArcoFavorito(idUsuario) {
     return database.executar(instrucaoSql);
 }
 
+function mostrarPostsUsuario(idUsuario) {
+    console.log("Consultando o arco favorito do usuário com ID:", idUsuario);
+    var instrucaoSql = `
+        SELECT p.titulo, p.descricao FROM Postagem as p WHERE fkUsuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     publicar,
     mostrar,
     contarPostagens,
     obterPersonagemFavorito,
-    obterArcoFavorito
+    obterArcoFavorito,
+    mostrarPostsUsuario
 }
