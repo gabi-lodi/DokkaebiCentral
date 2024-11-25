@@ -36,17 +36,11 @@
         </div>
     </div>
 
-    <div class="chartsFeed">
-        <div style="height:250px; width:650px; display: flex; align-content: center; justify-content: center;">
-            <canvas id="myChart"></canvas>
-        </div>
-        <div style="height:250px; width:650px; display: flex; align-content: center; justify-content: center;">
-            <canvas id="myChart2"></canvas>
+    <div class="banner">
+        <div class="container2">
         </div>
     </div>
-
-    <div class="colorLine"></div>
-
+    
     <div class="postsHome">
         <div>
             <h2>Postagens mais recentes</h2>
@@ -63,113 +57,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 <script>
 
-    window.onload = function () {
-        atualizarGraficoPersonagens();
-        atualizarGraficoArcos();
-    };
-
     document.addEventListener('DOMContentLoaded', carregarFeed);
-
-    const ctx = document.getElementById('myChart');
-
-    let grafico1 = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'Personagens mais Populares',
-                data: [],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    function atualizarGraficoPersonagens() {
-        fetch('/favs/favs/popularPersonagens')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Erro');
-                }
-                return response.json();
-            })
-            .then((dados) => {
-                console.log(dados)
-                var arrayPersos = [];
-                var dadosVar = [];
-                for (let i = 0; i < dados.length; i++) {
-                    arrayPersos.push(dados[i].nome)
-                    dadosVar.push(dados[i].quantidade)
-                }
-                console.log(dadosVar);
-                grafico1.data.labels = arrayPersos;
-                grafico1.data.datasets[0].data = dadosVar;
-
-                grafico1.update();
-            })
-            .catch((erro) => {
-                console.error('Erro ao atualizar o gráfico', erro);
-            });
-    }
-
-    // ---------------------------------------------------------------------------------------------------------------------------
-
-    const ctx2 = document.getElementById('myChart2');
-
-    let grafico2 = new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: [],
-            datasets: [{
-                label: 'Arcos mais Populares',
-                data: [],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-
-    function atualizarGraficoArcos() {
-        fetch('/favs/favs/popularArcos')
-            .then((response) => {
-                if (!response.ok) {
-                    console.error('Resposta do servidor não foi OK', response.status);
-                    throw new Error('Erro ao buscar dados');
-                }
-                return response.json();
-            })
-            .then((dados) => {
-                console.log(dados);
-                var arrayArcos = [];
-                var dadosVar2 = [];
-                for (let i = 0; i < dados.length; i++) {
-                    arrayArcos.push(dados[i].nome);
-                    dadosVar2.push(dados[i].quantidade);
-                }
-                console.log(dadosVar2);
-                grafico2.data.labels = arrayArcos;
-                grafico2.data.datasets[0].data = dadosVar2;
-                grafico2.update();
-            })
-            .catch((erro) => {
-                console.error('Erro ao atualizar o gráfico', erro);
-            });
-
-    }
-
-
 
     function carregarFeed() {
         fetch('/feed/mostrar')

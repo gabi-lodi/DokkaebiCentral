@@ -47,10 +47,16 @@
             <canvas id="myChart2"></canvas>
         </div>
     </div>
+<br>
+    <div class="colorLine"></div>
 
-    <div style="height:400px; width:1000px; display: flex; align-content: center; justify-content: center;">
-        <canvas id="myChart3"></canvas>
+    <div class="textBox">
+        <h1>Personagens e Arcos mais Populares</h1>
+        <p>
+            Com o avanço da tecnologia, muitos livros físicos passaram a ser acessíveis a partir de sites institucionais, ou até mesmo em formato de PDF. Diante disso, a partir dos anos 2000, as Web Novels começaram a ganhar popularidade diante a sua acessibilidade, que, diferentemente de livros físicos ou até alguns digitais, seu conteúdo é disponibilizado para leitores de forma 100% gratuita. As Web Novels, inicialmente, ganharam muita popularidade na Ásia, e ao longo dos anos, foi se espalhando ao redor do mundo, compartilhando também diversos gêneros de histórias, tais como fantasia e/ou isekai. Isekai e Isekai reverso é um gênero muito popular em Web Novels, tratando, respectivamente, do “renascimento” do protagonista em um novo mundo, ou o “novo mundo” indo para a vida do protagonista. Dois exemplos muito populares de Isekai e Isekai reverso seriam “The Beginning After The End” e “Solo Leveling”, que posteriormente ganharam sua versão de Manhwa (quadrinhos coreanos) e Anime (animação japonesa).
+        </p>
     </div>
+
 
 </body>
 
@@ -160,6 +166,28 @@
         atualizarGraficoPersonagens();
         atualizarGraficoArcos();
     };
+
+
+    function obterMediaLeitura() {
+    var idUsuario = sessionStorage.ID_USUARIO; // Recupere o ID do usuário do sessionStorage
+
+    fetch(`/feed/personagemFavorito/${idUsuario}`)
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Erro ao obter personagem favorito.");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        // Aqui você pode manipular a resposta, que contém o nome do personagem
+        console.log("Personagem favorito: ", data.nome);
+        // Exibir o nome do personagem favorito na tela
+        document.getElementById('persoFav').innerText = `${data.nome}`;
+      })
+      .catch(function (error) {
+        console.error("Erro ao obter o personagem favorito:", error);
+      });
+  }
 
 
     

@@ -21,6 +21,7 @@ var medidasRouter = require("./src/routes/medidas");
 var feedRouter = require("./src/routes/feed");
 var progressoRouter = require("./src/routes/progresso");
 var favsRouter = require("./src/routes/favs");
+var redefinirRouter = require("./src/routes/redefinir");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -34,6 +35,7 @@ app.use("/medidas", medidasRouter);
 app.use("/feed", feedRouter);
 app.use("/progresso", progressoRouter);
 app.use("/favs", favsRouter);
+app.use("/redefinir", redefinirRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

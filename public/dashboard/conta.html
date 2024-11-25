@@ -29,6 +29,7 @@
         <b><a href="./conta.html" style="text-decoration: underline;">Conta</a></b>
         <img src="./../imagens/star.png" alt="" style="height: 20px;">
       </div>
+      <a href="./../index.html">Sair</a>
       <div>
         <img src="./../imagens/avatar-svgrepo-com.png" alt="" style="width: 40px;">
       </div>
@@ -111,8 +112,8 @@
           <br>
         </div>
         <button onclick="redefinir()">Redefinir favoritos</button>
+        <div id="divErro"></div>
       </div>
-
 
 </body>
 
@@ -129,17 +130,26 @@
   }
 
   function redefinir() {
+    var idUsuario = sessionStorage.ID_USUARIO;
     var persoFavVar = selectPF.value;
     var arcoFavVar = selectAF.value;
 
-    fetch("/usuarios/redefinir", {
+    if (
+      persoFavVar == "#" ||
+      arcoFavVar == "#"
+    ) {
+      divErro.innerHTML = "<div style='color:red; padding: 10px;'>*Erro ao redefinir: escolha as duas opções.</div>";
+
+      return false;
+    }
+
+    fetch("/redefinir/redefinir/redefinir", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
+        idUsuarioServer: idUsuario,
         persoFavServer: persoFavVar,
         arcoFavServer: arcoFavVar
       }),
@@ -149,12 +159,11 @@
 
         if (resposta.ok) {
 
-          alert('Cadastro realizado com sucesso!')
-          window.location = "login.html";
-
+          alert('Favoritos redefinido com Sucesso!')
+          location.reload();
           limparFormulario();
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          throw "Houve um erro ao redefinir!";
         }
       })
       .catch(function (resposta) {
@@ -163,8 +172,6 @@
 
     return false;
   }
-
-
 
   function progresso() {
     data = []
