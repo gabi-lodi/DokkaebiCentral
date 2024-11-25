@@ -9,8 +9,6 @@ function publicar(titulo, descricao, idUsuario) {
     return database.executar(instrucaoSql);
 }
 
-
-
 function mostrar(){
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ")
     var instrucaoSql = `SELECT p.idPostagem, p.titulo, p.descricao, u.nome FROM Postagem AS p JOIN Usuario AS u ON p.fkUsuario = u.idUsuario ORDER BY p.idPostagem DESC;`

@@ -42,8 +42,9 @@ function popularPersonagens(req, res) {
 function popularArcos(req, res) {
     favsModel.obterPopularidadeArcos()
         .then((resultado) => {
+            console.log("Resultado da consulta:", resultado);
             if (resultado.length > 0) {
-                res.status(200).json(resultado); // Retorna os dados em JSON
+                res.status(200).json(resultado);
             } else {
                 res.status(204).send("Nenhum dado encontrado.");
             }
@@ -53,6 +54,7 @@ function popularArcos(req, res) {
             res.status(500).json({ message: "Erro interno ao buscar dados de popularidade.", error: erro.sqlMessage });
         });
 }
+
 
 module.exports = {
     // listar,

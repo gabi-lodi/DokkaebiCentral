@@ -4,30 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dokkaebi Central</title>
+    <title>Estatísticas</title>
     <link rel="stylesheet" href="./css/style.css">
-
-    <script src="./js/sessao.js"></script>
 </head>
 
 <body>
 
-    <div class="navbar">
 
+    <div class="navbar">
         <div class="navbarLeft">
             <img src="./imagens/1.png" alt="" style="height: 50px;">
             <h3>Dokkaebi Central</h3>
         </div>
 
         <div class="navbarMiddle">
-            <a href="./index.html">Home</a>
-            <a href="./sobreORV.html">Sobre ORV</a>
             <div style="display: flex; align-items: center;">
-                <b><a href="./blog.html" style="text-decoration: underline;">Feed</a></b>
+                <a href="./index.html">Home</a>
+            </div>
+            <a href="./sobreORV.html">Sobre ORV</a>
+            <a href="./blog.html">Feed</a>
+            <div style="display: flex; align-items: center;">
+                <b><a href="./estatisticas.html" style="text-decoration: underline;">Estatísticas</a></b>
                 <img src="./imagens/star.png" alt="" style="height: 20px;">
             </div>
-            <a href="./estatisticas.html">Estatísticas</a>
         </div>
+
+        <!-- login e cadastro -->
 
         <div class="navbarRight">
             <a href="./login.html">Login</a>
@@ -35,40 +37,26 @@
             <a href="./cadastro.html">Cadastro</a>
         </div>
     </div>
+    </div>
 
     <div class="chartsFeed">
-        <div style="height:250px; width:650px; display: flex; align-content: center; justify-content: center;">
+        <div style="height:400px; width:1000px; display: flex; align-content: center; justify-content: center;">
             <canvas id="myChart"></canvas>
         </div>
-        <div style="height:250px; width:650px; display: flex; align-content: center; justify-content: center;">
+        <div style="height:400px; width:1000px; display: flex; align-content: center; justify-content: center;">
             <canvas id="myChart2"></canvas>
         </div>
     </div>
 
-    <div class="colorLine"></div>
-
-    <div class="postsHome">
-        <div>
-            <h2>Postagens mais recentes</h2>
-        </div>
-
-        <div class="postsContainer">
-            <div id="feed_container" class="feed-container">
-            </div>
-        </div>
+    <div style="height:400px; width:1000px; display: flex; align-content: center; justify-content: center;">
+        <canvas id="myChart3"></canvas>
     </div>
 
-
 </body>
+
+</html>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 <script>
-
-    window.onload = function () {
-        atualizarGraficoPersonagens();
-        atualizarGraficoArcos();
-    };
-
-    document.addEventListener('DOMContentLoaded', carregarFeed);
 
     const ctx = document.getElementById('myChart');
 
@@ -168,48 +156,11 @@
             });
 
     }
+    window.onload = function () {
+        atualizarGraficoPersonagens();
+        atualizarGraficoArcos();
+    };
 
 
-
-    function carregarFeed() {
-        fetch('/feed/mostrar')
-            .then((response) => {
-                if (!response.ok) throw new Error("Erro ao carregar posts!");
-                return response.json();
-            })
-            .then((posts) => {
-                exibirPosts(posts);
-            })
-            .catch((error) => {
-                console.error("Erro ao carregar o feed: ", error);
-            });
-    }
-
-    function exibirPosts(posts) {
-        const feedContainer = document.getElementById('feed_container');
-        feedContainer.innerHTML = ''; // Limpa o container
-
-        if (posts.length === 0) {
-            feedContainer.innerHTML = '<p>Nenhuma postagem encontrada.</p>';
-            return;
-        }
-
-        posts.forEach((post) => {
-            const postElement = document.createElement('div');
-            postElement.className = 'post';
-
-            feedContainer.innerHTML += `
-        <div class="postagem">
-            <span style="text-decoration: underline;">${post.nome}</span>
-            <h3><b>${post.titulo}</b></h3>
-            <p>${post.descricao}</p>
-            <br>
-        </div>
-        `;
-
-            feedContainer.appendChild(postElement);
-        });
-    }
-
-
+    
 </script>
