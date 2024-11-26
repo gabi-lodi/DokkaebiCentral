@@ -13,4 +13,7 @@ router.post("/obterProgresso", function (req, res) {
     console.log('entrei no router')
 });
 
+router.get('/mediaCapitulos', progressoController.mediaCapitulos);
+
+
 module.exports = router;

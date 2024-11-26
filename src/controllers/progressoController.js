@@ -54,12 +54,28 @@ function obterProgresso (req, res){
     }
 }
 
+function mediaCapitulos(req, res) {
+    progressoModel.mediaCapitulos()
+        .then((resultado) => {
+            if (resultado.length > 0) {
+                res.status(200).json({ mediaCapitulo: resultado[0].media });
+            } else {
+                res.status(204).send("Nenhum progresso encontrado.");
+            }
+        })
+        .catch((erro) => {
+            console.error("Erro ao buscar média dos capítulos: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
 module.exports = {
     // listar,
     // listarPorUsuario,
     // pesquisarDescricao,
     progresso,
-    obterProgresso
+    obterProgresso,
+    mediaCapitulos
     // editar,
     // deletar
 }

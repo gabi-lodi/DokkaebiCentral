@@ -46,16 +46,16 @@ fkUsuario int,
 		references Usuario(idUsuario)
 );
 
-CREATE TABLE Comentario(
-idComentario int primary key auto_increment,
-conteudo varchar(300),
-fkPostagem int,
-fkComentarioUsuario int,
-	constraint fkComPost foreign key (fkPostagem)
-		references Postagem(idPostagem),
-    constraint fkComUsuario foreign key (fkComentarioUsuario)
-		references Usuario(idUsuario)
-);
+-- CREATE TABLE Comentario(
+-- idComentario int primary key auto_increment,
+-- conteudo varchar(300),
+-- fkPostagem int,
+-- fkComentarioUsuario int,
+-- 	constraint fkComPost foreign key (fkPostagem)
+-- 		references Postagem(idPostagem),
+--     constraint fkComUsuario foreign key (fkComentarioUsuario)
+-- 		references Usuario(idUsuario)
+-- );
 
 INSERT INTO Personagem (nome) VALUES
 	('Kim Dokja'),
@@ -90,24 +90,50 @@ select * from Arco;
 select * from Postagem;
 select * from ProgressoLeitura;
 
-UPDATE Usuario SET fkPersoFav = ${persoFav} AND fkArcoFav = ${arcoFav} WHERE idUsuario = ${idUsuario}
-
+-- UPDATE Usuario SET fkPersoFav = ${persoFav} AND fkArcoFav = ${arcoFav} WHERE idUsuario = ${idUsuario};
 
 SELECT p.nome FROM Personagem AS p JOIN Usuario AS u ON u.fkPersoFav = p.idPerso;
 
-SELECT p.nome, COUNT(u.idUsuario) AS quantidade FROM Usuario AS u RIGHT JOIN Arco AS p ON u.fkArcoFav = p.idArco GROUP BY p.nome ORDER BY quantidade DESC;
+-- select para o ranking de arcos mais populares
+SELECT p.nome, COUNT(u.idUsuario) AS quantidade 
+	FROM Usuario AS u RIGHT 
+    JOIN Arco AS p 
+		ON u.fkArcoFav = p.idArco 
+	GROUP BY p.nome 
+    ORDER BY quantidade DESC;
 
+-- select para o ranking de personagens
+SELECT p.nome, COUNT(u.idUsuario) AS quantidade 
+	FROM Usuario AS u 
+	RIGHT JOIN Personagem AS p 
+		ON u.fkPersoFav = p.idPerso 
+	GROUP BY p.nome 
+	ORDER BY quantidade DESC;
+
+-- select para as postagens
 SELECT p.idPostagem, p.titulo, p.descricao, u.nome FROM Postagem as p JOIN Usuario as u ON p.fkUsuario = u.idUsuario ORDER BY idPostagem desc;
 
-SELECT COUNT(idUsuario) FROM Usuario GROUP BY fkPersoFav;
-
+-- select para quantidade de postagens
 SELECT COUNT(idPostagem) FROM Postagem WHERE fkUsuario = 1;
 
+-- select para mostrar o personagem favorito de um determinado usuário
 SELECT p.nome FROM Personagem as p JOIN Usuario as u ON u.fkPersoFav = p.idPerso WHERE u.idUsuario = 1;
+
+-- select para mostrar o arco favorito de um determindado usuário
 SELECT a.nome FROM Arco as a JOIN Usuario as u ON u.fkPersoFav = a.idArco WHERE u.idUsuario = 1;
 
-UPDATE Usuario SET fkPersoFav = 1 WHERE idUsuario = 1;
+-- UPDATE Usuario SET fkPersoFav = 1 WHERE idUsuario = 1;
 
+-- select para o gráfico de progresso
 SELECT PL.capitulo FROM ProgressoLeitura as PL JOIN Usuario as U ON PL.fkUsuario = U.idUsuario  WHERE nome = '' AND email = ''AND senha = '';
 
+-- select para a média do progresso de leitura dos usuários (média de capitulos lidos)
+SELECT ROUND(AVG(capitulo)) FROM ProgressoLeitura;
 
+SELECT p.nome, COUNT(u.idUsuario) AS quantidade
+FROM Usuario AS u
+JOIN Personagem AS p 
+    ON u.fkPersoFav = p.idPerso
+GROUP BY p.idPerso
+ORDER BY quantidade DESC
+LIMIT 1;

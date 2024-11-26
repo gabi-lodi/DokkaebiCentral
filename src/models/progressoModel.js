@@ -19,8 +19,17 @@ function obterProgresso(usuario, email){
     return database.executar(instrucaoSql);
 }
 
+function mediaCapitulos() {
+    console.log("Executando query para calcular a média dos capítulos...");
+    const instrucaoSql = `
+        SELECT ROUND(AVG(capitulo)) AS media 
+        FROM ProgressoLeitura;
+    `;
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     progresso,
-    obterProgresso
+    obterProgresso,
+    mediaCapitulos
 }

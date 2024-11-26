@@ -57,13 +57,17 @@
         </p>
     </div>
 
+    <div>
+        <h3>Média de Capítulos Lidos</h3>
+        <div id="avgCapitulos">00</div>
+    </div>
+
 
 </body>
 
 </html>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
 <script>
-
     const ctx = document.getElementById('myChart');
 
     let grafico1 = new Chart(ctx, {
@@ -196,5 +200,25 @@
     }
 
 
+    function avgCapitulos() {
+        fetch('/progresso/mediaCapitulos')
+            .then((response) => {
+                if (!response.ok) throw new Error("Erro");
+                return response.json();
+            })
+            .then((media) => {
+                const mediaContainer = document.getElementById('avgCapitulos');
+                mediaContainer.innerHTML = `${media.mediaCapitulo}`;
+            })
+            .catch((error) => {
+                console.error("Erro: ", error);
+            });
+    }
+
+    window.onload = function () {
+        avgCapitulos();
+        atualizarGraficoArcos();
+        atualizarGraficoPersonagens(); 
+  }
 
 </script>
