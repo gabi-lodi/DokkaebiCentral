@@ -22,9 +22,3 @@
 ![MySQL](https://img.shields.io/badge/MySQL-black?style=for-the-badge&logo=mysql&logoColor=white)
 </div>
 
-
-## ˖⌇Screenshots
-
-## ˖⌇Licença
-
-## ˖⌇Instalação Local
