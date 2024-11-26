@@ -748,3 +748,11 @@ svg{
     width: 20vw;
     border-radius: 20px;
 }
+
+.mediaContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}

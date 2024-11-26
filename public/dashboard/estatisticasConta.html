@@ -51,9 +51,13 @@
 
     <div class="textBox">
         <h1>Personagens e Arcos mais Populares</h1>
-        <p>
 
-        </p>
+        
+            <div class="mediaContainer">
+                <h3>Média de Capítulos Lidos:</h3>
+                
+                <div id="avgCapitulos">00</div>
+            </div>
     </div>
 
 
@@ -193,6 +197,27 @@
                 console.error("Erro ao obter o personagem favorito:", error);
             });
     }
+
+    function avgCapitulos() {
+        fetch('/progresso/mediaCapitulos')
+            .then((response) => {
+                if (!response.ok) throw new Error("Erro");
+                return response.json();
+            })
+            .then((media) => {
+                const mediaContainer = document.getElementById('avgCapitulos');
+                mediaContainer.innerHTML = `${media.mediaCapitulo}`;
+            })
+            .catch((error) => {
+                console.error("Erro: ", error);
+            });
+    }
+
+    window.onload = function () {
+        avgCapitulos();
+        atualizarGraficoArcos();
+        atualizarGraficoPersonagens(); 
+  }
 
 
 
