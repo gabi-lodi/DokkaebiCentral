@@ -1,5 +1,5 @@
 var database = require("../database/config");
-45
+
 
 // da um update no valor inserido ao usuário se cadastrar
 function progresso(capitulo, idUsuario) {

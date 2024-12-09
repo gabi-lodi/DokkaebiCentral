@@ -1,4 +1,4 @@
-DROP DATABASE DokkaebiCentral;
+
 CREATE DATABASE DokkaebiCentral;
 USE DokkaebiCentral;
 
